@@ -1,0 +1,57 @@
+@mixin mobile {
+  @media (max-width: $mobile-width) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: $mobile-width) and (max-width: $tablet-width) {
+    @content;
+  }
+}
+
+@mixin desktops {
+  @media (min-width: $tablet-width) {
+    @content;
+  }
+}
+
+@mixin review {
+  width: 35vw;
+  height: 75vh;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  backdrop-filter: blur(5px);
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  flex-direction: column;
+  font-weight: 200;
+  padding: 2em;
+  overflow: hidden;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    display: none;
+    scrollbar-width: none;
+  }
+}
+
+@mixin button($padding) {
+  padding: $padding;
+  border: none;
+  background-color: transparent;
+  color: $white-inactive;
+  font-size: 20px;
+  backdrop-filter: blur(10px);
+  border-right: 3px solid transparent;
+
+  &:hover {
+    border-right: 3px solid $red;
+    color: $white-fonts;
+  }
+  &:active {
+    border-right: 3px solid transparent;
+    background-color: $red-transparent;
+  }
+}
