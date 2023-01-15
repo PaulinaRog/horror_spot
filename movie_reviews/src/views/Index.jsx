@@ -2,9 +2,10 @@ import React from "react";
 import Nav from "../components/Nav";
 import Movies from "../components/Movies";
 import { useState } from "react";
+import mainPhoto from "../assets/main.jpg";
 
 export default function Index() {
-  const [src, setSrc] = useState("../../src/assets/main.jpg");
+  const [src, setSrc] = useState(mainPhoto);
   const [style, setStyle] = useState({ display: "none" });
   const [title, setTitle] = useState(null);
   const [text, setText] = useState(null);
