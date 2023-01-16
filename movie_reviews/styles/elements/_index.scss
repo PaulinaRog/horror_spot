@@ -32,6 +32,16 @@
     text-align: center;
     backdrop-filter: unset;
   }
+  &-background {
+    background-image: url(../src/assets/bg.png);
+    width: 100vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    z-index: 3;
+  }
 }
 
 .movies {

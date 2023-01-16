@@ -15,23 +15,23 @@ export default function Index() {
           left: "-35%",
         }}
       />
-      <div
-        style={{
-          backgroundImage: "url('../src/assets/bg.png')",
-          width: "100vw",
-          height: "100vh",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-          position: "absolute",
-          top: 0,
-          zIndex: 3,
-        }}
-      >
+      <div className="index-background">
         <Nav />
         <div className="title">
           <h1 className="horror-title" title="horror spot">
             horror spot
           </h1>
+          <p style={{ width: 800, marginTop: 40, color: "rgb(144, 144, 144)" }}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
+            animi asperiores, illo sit minus ullam recusandae eius fugit
+            mollitia voluptates fugiat ducimus rem tempora delectus enim, esse
+            eveniet sunt quia ex modi provident accusamus? Voluptatem nesciunt,
+            nostrum asperiores maiores doloribus facere cupiditate omnis totam,
+            temporibus at minima quis quisquam suscipit repudiandae magni modi a
+            vel earum corrupti ipsum. Minus amet perferendis enim qui laudantium
+            modi omnis et officia quibusdam eaque corrupti, labore aspernatur
+            facere molestiae delectus?
+          </p>
         </div>
       </div>
     </div>

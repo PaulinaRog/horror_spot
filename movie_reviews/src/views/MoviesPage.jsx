@@ -34,7 +34,13 @@ export default function Index() {
               >
                 filmy
               </h1>
-              <p></p>
+              <p style={{ marginTop: 300 }}>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Distinctio, doloribus velit inventore corporis cupiditate
+                exercitationem saepe quod necessitatibus quo facere maiores
+                perspiciatis, debitis nemo molestias. Quis quibusdam nisi
+                voluptatibus exercitationem.
+              </p>
             </div>
           </>
         ) : null}
