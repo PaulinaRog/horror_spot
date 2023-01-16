@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Index from "./src/views/Index";
 import "./styles/main.scss";
 import { createRoot } from "react-dom/client";
+import MoviesPage from "./src/views/MoviesPage";
 
 export default function App() {
   return (
@@ -10,6 +11,9 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="movies" element={<MoviesPage />}>
+            <Route path=":id" element={<MoviesPage />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </>

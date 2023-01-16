@@ -1,22 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import movies from "../utils/MoviesList";
 
-export default function Movies({
-  setSrc,
-  setStyle,
-  setTitle,
-  setText,
-  setMain,
-}) {
+export default function Movies({ setSrc }) {
   const scrollRef = useRef();
+  const navigate = useNavigate();
 
   const handleClick = (e) => {
     setSrc(e.target.src);
-    setStyle({ display: "flex" });
-    setTitle(e.target.title);
-    setText(e.target.alt);
-    setMain({ display: "none" });
+    navigate(e.target.id);
   };
 
   const handleScroll = () => {
@@ -34,8 +27,6 @@ export default function Movies({
                 className="movies-poster"
                 src={movie.src}
                 onClick={handleClick}
-                title={movie.title}
-                alt={movie.text}
                 id={movie.id}
               />
             </div>
