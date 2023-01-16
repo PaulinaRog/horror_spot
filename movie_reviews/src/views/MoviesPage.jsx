@@ -2,12 +2,11 @@ import React from "react";
 import Nav from "../components/Nav";
 import Movies from "../components/Movies";
 import { useState } from "react";
-import mainPhoto from "../assets/main.jpg";
+import mainPhoto from "../assets/it.webp";
 import { useParams, useLocation } from "react-router-dom";
 import movies from "../utils/MoviesList";
 
 export default function Index() {
-  const [src, setSrc] = useState(mainPhoto);
   const { id } = useParams();
   const { pathname } = useLocation();
 
@@ -15,7 +14,7 @@ export default function Index() {
     <>
       <div style={{ backgroundColor: "black" }}>
         <Nav />
-        <Movies setSrc={setSrc} />
+        <Movies />
         {pathname === "/movies" ? (
           <>
             <div
@@ -24,14 +23,17 @@ export default function Index() {
             ></div>
 
             <div className="index-main">
-              <span
+              <h1
+                className="horror-title"
+                title="filmy"
                 style={{
-                  fontSize: 100,
-                  color: "rgb(162, 6, 6)",
+                  textTransform: "lowercase",
+                  position: "absolute",
+                  left: "30%",
                 }}
               >
                 filmy
-              </span>
+              </h1>
               <p></p>
             </div>
           </>

@@ -3,12 +3,11 @@ import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import movies from "../utils/MoviesList";
 
-export default function Movies({ setSrc }) {
+export default function Movies({}) {
   const scrollRef = useRef();
   const navigate = useNavigate();
 
   const handleClick = (e) => {
-    setSrc(e.target.src);
     navigate(e.target.id);
   };
 

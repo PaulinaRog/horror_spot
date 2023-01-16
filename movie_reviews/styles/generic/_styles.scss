@@ -14,11 +14,11 @@ button,
 select,
 a {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  text-decoration: none;
 }
 
 h1 {
   font-size: 25px;
-  font-weight: 500;
   color: $red;
   text-transform: uppercase;
 }
