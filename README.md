@@ -1,3 +1,3 @@
 # movie_reviews
 
-https://movierevvvs.netlify.app
+https://horrorspot.netlify.app/

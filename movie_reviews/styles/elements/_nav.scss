@@ -1,7 +1,7 @@
 .nav {
-  width: 5vw;
+  width: 6vw;
   height: 100vh;
-  background-color: $transparent-bg;
+  background-image: url(../src/assets/navbg.png);
   z-index: 5;
   position: absolute;
   display: flex;
@@ -9,6 +9,9 @@
   align-items: center;
   gap: 40px;
   top: 0;
+  left: -10px;
+  background-repeat: no-repeat;
+  background-size: cover;
 
   &-button {
     width: 5vw;

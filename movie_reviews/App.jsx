@@ -5,6 +5,8 @@ import "./styles/main.scss";
 import { createRoot } from "react-dom/client";
 import MoviesPage from "./src/views/MoviesPage";
 import TvSeriesPage from "./src/views/TvSeriesPage";
+import GamesPage from "./src/views/GamesPage";
+import BooksPage from "./src/views/BooksPage";
 
 export default function App() {
   return (
@@ -16,6 +18,12 @@ export default function App() {
             <Route path=":id" element={<MoviesPage />} />
           </Route>
           <Route path="tvseries" element={<TvSeriesPage />}>
+            <Route path=":id" />
+          </Route>
+          <Route path="games" element={<GamesPage />}>
+            <Route path=":id" />
+          </Route>
+          <Route path="books" element={<BooksPage />}>
             <Route path=":id" />
           </Route>
         </Routes>

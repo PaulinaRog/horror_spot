@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Nav from "../components/Nav";
 import nun from "../assets/nun.png";
+import SmBg from "../assets/sm-bg.png";
+import SocialMedia from "../components/SocialMedia";
 
 export default function Index() {
   return (
@@ -17,9 +19,26 @@ export default function Index() {
       />
       <div className="index-background">
         <Nav />
+        <div
+          style={{
+            backgroundImage: `url(${SmBg})`,
+            height: 100,
+            width: 450,
+            position: "absolute",
+            right: 0,
+            top: 20,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+          }}
+        >
+          <SocialMedia />
+        </div>
         <div className="title">
-          <h1 className="horror-title" title="horror spot">
-            horror spot
+          <h1 className="horror-title" title="HORROR SPOT">
+            HORROR SPOT
           </h1>
           <p style={{ width: 800, marginTop: 40, color: "rgb(144, 144, 144)" }}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
