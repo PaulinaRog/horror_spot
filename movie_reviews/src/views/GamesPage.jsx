@@ -1,5 +1,7 @@
 import React from "react";
 import Nav from "../components/Nav";
+import mortuary from "../assets/mortuaryAssistant.png";
+import bg10 from "../assets/bg10.png";
 
 export default function GamesPage() {
   return (
@@ -7,13 +9,13 @@ export default function GamesPage() {
       <div
         className="bg-photo"
         style={{
-          backgroundImage: "url(../src/assets/mortuaryAssistant.png)",
+          backgroundImage: `url(${mortuary})`,
           left: "-40%",
         }}
       ></div>
       <div
         className="bg-black"
-        style={{ backgroundImage: "url(../src/assets/bg10.png)" }}
+        style={{ backgroundImage: `url(${bg10})` }}
       ></div>
       <Nav />
       <h1 className="horror-title header-title" title="gry">
