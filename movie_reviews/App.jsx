@@ -4,6 +4,7 @@ import Index from "./src/views/Index";
 import "./styles/main.scss";
 import { createRoot } from "react-dom/client";
 import MoviesPage from "./src/views/MoviesPage";
+import TvSeriesPage from "./src/views/TvSeriesPage";
 
 export default function App() {
   return (
@@ -13,6 +14,9 @@ export default function App() {
           <Route path="/" element={<Index />} />
           <Route path="movies" element={<MoviesPage />}>
             <Route path=":id" element={<MoviesPage />} />
+          </Route>
+          <Route path="tvseries" element={<TvSeriesPage />}>
+            <Route path=":id" />
           </Route>
         </Routes>
       </BrowserRouter>

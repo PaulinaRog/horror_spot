@@ -17,23 +17,15 @@ export default function Index() {
         <Movies />
         {pathname === "/movies" ? (
           <>
+            <h1 className="horror-title header-title" title="filmy">
+              filmy
+            </h1>
             <div
               className="index"
               style={{ backgroundImage: `url(${mainPhoto})` }}
             ></div>
 
             <div className="index-main">
-              <h1
-                className="horror-title"
-                title="filmy"
-                style={{
-                  textTransform: "lowercase",
-                  position: "absolute",
-                  left: "30%",
-                }}
-              >
-                filmy
-              </h1>
               <p style={{ marginTop: 300 }}>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                 Distinctio, doloribus velit inventore corporis cupiditate
