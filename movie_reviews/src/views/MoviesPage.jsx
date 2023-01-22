@@ -5,14 +5,27 @@ import { useState } from "react";
 import mainPhoto from "../assets/it.webp";
 import { useParams, useLocation } from "react-router-dom";
 import movies from "../utils/MoviesList";
+import { useEffect } from "react";
 
 export default function Index() {
   const { id } = useParams();
   const { pathname } = useLocation();
+  const [width, setWidth] = useState(null);
+  const [animation, setAnimation] = useState(null);
+
+  useEffect(() => {
+    setAnimation("width 2s ease");
+    setWidth("120vw");
+  }, []);
 
   return (
     <>
-      <div style={{ backgroundColor: "black" }}>
+      <div
+        className="main"
+        style={{
+          backgroundColor: "black",
+        }}
+      >
         <Nav />
         <Movies />
         {pathname === "/movies" ? (
@@ -22,7 +35,11 @@ export default function Index() {
             </h1>
             <div
               className="index"
-              style={{ backgroundImage: `url(${mainPhoto})` }}
+              style={{
+                backgroundImage: `url(${mainPhoto})`,
+                animation: animation && animation,
+                width: width && width,
+              }}
             ></div>
 
             <div className="index-main">
@@ -42,7 +59,10 @@ export default function Index() {
             {" "}
             <div
               className="index"
-              style={{ backgroundImage: `url(${movies[id].src})` }}
+              style={{
+                backgroundImage: `url(${movies[id].src})`,
+                right: 0,
+              }}
             ></div>
             <main className="index-review">
               <h1 style={{ paddingBottom: "1em" }}>{movies[id].title}</h1>

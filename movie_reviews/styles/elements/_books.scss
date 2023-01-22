@@ -1,0 +1,20 @@
+.books-img {
+  width: 150px;
+  height: 225px;
+  position: relative;
+  &:hover {
+    height: 250px;
+    width: 175px;
+    margin: -12.5px;
+    cursor: url("../src/assets/knife-mid.png"), auto;
+  }
+}
+.books-content {
+  position: absolute;
+  z-index: 5;
+  width: 600px;
+  top: 100px;
+  left: 200px;
+  background-color: $black-semi;
+  padding: 2em;
+}

@@ -19,30 +19,50 @@ export default function Nav() {
             hs
           </p>
         </NavLink>
-        <NavLink to="/movies">
+        <NavLink to="/movies" style={{ position: "relative" }}>
           <button className="nav-button">
             <i className="fa-solid fa-clapperboard nav-icon"></i>
           </button>
+          <div className="drip"></div>
+          <div className="drip-1"></div>
+          <div className="drip-2"></div>
+          <div className="drip-3"></div>
         </NavLink>
-        <NavLink to="/tvseries">
+        <NavLink to="/tvseries" style={{ position: "relative" }}>
           <button className="nav-button">
             <i className="fa-solid fa-tv nav-icon"></i>
           </button>
+          <div className="drip"></div>
+          <div className="drip-1"></div>
+          <div className="drip-2"></div>
+          <div className="drip-3"></div>
         </NavLink>
-        <NavLink to="/games">
+        <NavLink to="/games" style={{ position: "relative" }}>
           <button className="nav-button">
             <i className="fa-solid fa-gamepad nav-icon"></i>
           </button>
+          <div className="drip"></div>
+          <div className="drip-1"></div>
+          <div className="drip-2"></div>
+          <div className="drip-3"></div>
         </NavLink>
-        <NavLink to="/books">
+        <NavLink to="/books" style={{ position: "relative" }}>
           <button className="nav-button">
             <i className="fa-solid fa-book nav-icon"></i>
           </button>
+          <div className="drip"></div>
+          <div className="drip-1"></div>
+          <div className="drip-2"></div>
+          <div className="drip-3"></div>
         </NavLink>
-        <NavLink to="/news">
+        <NavLink to="/news" style={{ position: "relative" }}>
           <button className="nav-button">
             <i className="fa-regular fa-newspaper nav-icon"></i>
           </button>
+          <div className="drip"></div>
+          <div className="drip-1"></div>
+          <div className="drip-2"></div>
+          <div className="drip-3"></div>
         </NavLink>
       </div>
     </>

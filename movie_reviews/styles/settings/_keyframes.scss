@@ -1,0 +1,61 @@
+@keyframes flicker {
+  0% {
+    opacity: 0.4;
+  }
+  5% {
+    opacity: 0.5;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  15% {
+    opacity: 0.85;
+  }
+  25% {
+    opacity: 0.5;
+  }
+  30% {
+    opacity: 1;
+  }
+  35% {
+    opacity: 0.1;
+  }
+  40% {
+    opacity: 0.25;
+  }
+  45% {
+    opacity: 0.5;
+  }
+  60% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.85;
+  }
+  80% {
+    opacity: 0.4;
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+// animation: flicker s linear infinite;
+// ::after {
+//   content: "";
+//   -webkit-box-shadow: -35px 0px 60px 8px rgba(255, 255, 255, 1);
+//   -moz-box-shadow: -35px 0px 60px 8px rgba(255, 255, 255, 1);
+//   box-shadow: -35px 0px 60px 8px rgba(255, 255, 255, 1);
+// }
+
+@keyframes width {
+  from {
+    width: 100vw;
+  }
+  to {
+    width: 120vw;
+  }
+}

@@ -1,0 +1,72 @@
+.movies {
+  height: 78vh;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 17vw;
+  left: 7vw;
+  //   background-color: $transparent-bg;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  &::-webkit-scrollbar {
+    display: none;
+    scrollbar-width: none;
+  }
+
+  &-poster {
+    width: 15vw;
+    height: 20vh;
+    object-fit: cover;
+    object-position: top;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    position: relative;
+    cursor: pointer;
+    border-right: 7px solid transparent;
+    &:hover {
+      border-right: 7px solid $red;
+      width: 17vw;
+      height: 22vh;
+      margin-top: 2px;
+      margin-bottom: 3px;
+      cursor: url("../src/assets/knife-mid.png"), auto;
+    }
+  }
+  &-nav {
+    height: 2em;
+    width: 15.25vw;
+    font-size: 30px;
+    background-color: $red-transparent;
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $white-inactive;
+    &:hover {
+      color: $white-fonts;
+    }
+    &:active {
+      background-color: $red;
+    }
+  }
+  &-btn {
+    position: absolute;
+    left: 8vw;
+    bottom: 10px;
+    z-index: 5;
+    margin-left: -5px;
+  }
+  &-btn-top {
+    position: absolute;
+    left: 8vw;
+    top: 15px;
+    z-index: 5;
+    margin-left: -5px;
+  }
+}

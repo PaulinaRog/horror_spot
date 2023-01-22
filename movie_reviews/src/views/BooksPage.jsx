@@ -1,23 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Nav from "../components/Nav";
 import book from "../assets/book.jpg";
-import bg8 from "../assets/bg8.png";
+import bg20 from "../assets/bg.png";
+import Books from "../components/Books";
+import { useLocation, useParams } from "react-router-dom";
+import Book from "../components/Book";
 
 export default function BooksPage() {
+  const { pathname } = useLocation();
+  const { id } = useParams();
+
   return (
     <>
       <div
         className="bg-photo"
-        style={{ backgroundImage: `url(${book})`, left: "0" }}
+        style={{ backgroundImage: `url(${book})`, left: "-40%" }}
       ></div>
       <div
         className="bg-black"
-        style={{ backgroundImage: `url(${bg8})` }}
+        style={{ backgroundImage: `url(${bg20})` }}
       ></div>
       <Nav />
-      <h1 className="horror-title header-title" title="książki">
-        książki
-      </h1>
+      {pathname.includes(id) ? <Book /> : null}
+      {pathname === "/books" ? (
+        <>
+          <h1 className="horror-title header-title" title="książki">
+            książki
+          </h1>
+        </>
+      ) : null}
+      <Books />
     </>
   );
 }

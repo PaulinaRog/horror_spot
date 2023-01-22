@@ -1,20 +1,37 @@
 import React, { useState } from "react";
 import Nav from "../components/Nav";
-import nun from "../assets/nun.png";
+import saw from "../assets/saw.jpg";
+import sadako from "../assets/sadako.png";
 import SmBg from "../assets/sm-bg.png";
 import SocialMedia from "../components/SocialMedia";
+import { useEffect } from "react";
 
 export default function Index() {
+  const [photo, setPhoto] = useState(saw);
+  const [style, setStyle] = useState(null);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setPhoto(sadako);
+      setStyle("flicker 5s linear");
+    }, 10000);
+    setTimeout(() => {
+      setPhoto(saw);
+      setStyle(null);
+    }, 15000);
+  }, []);
+
   return (
     <div>
       <img
-        src={nun}
+        src={photo}
         style={{
           width: "90vw",
           height: "100vh",
           position: "relative",
           zIndex: 1,
           left: "-35%",
+          animation: style && style,
         }}
       />
       <div className="index-background">
@@ -32,6 +49,7 @@ export default function Index() {
             alignItems: "center",
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
+            gap: 20,
           }}
         >
           <SocialMedia />
@@ -40,7 +58,10 @@ export default function Index() {
           <h1 className="horror-title" title="HORROR SPOT">
             HORROR SPOT
           </h1>
-          <p style={{ width: 800, marginTop: 40, color: "rgb(144, 144, 144)" }}>
+          <p
+            style={{ width: 800, marginTop: 40, color: "rgb(144, 144, 144)" }}
+            className="index-desc"
+          >
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
             animi asperiores, illo sit minus ullam recusandae eius fugit
             mollitia voluptates fugiat ducimus rem tempora delectus enim, esse

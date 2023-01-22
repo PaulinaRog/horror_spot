@@ -24,7 +24,7 @@ export default function App() {
             <Route path=":id" />
           </Route>
           <Route path="books" element={<BooksPage />}>
-            <Route path=":id" />
+            <Route path=":id" element={<BooksPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
