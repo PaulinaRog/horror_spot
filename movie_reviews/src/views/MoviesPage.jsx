@@ -6,6 +6,8 @@ import mainPhoto from "../assets/it.webp";
 import { useParams, useLocation } from "react-router-dom";
 import movies from "../utils/MoviesList";
 import { useEffect } from "react";
+import MovieCard from "../components/MovieCard";
+import MovieCategories from "../components/MovieCategories";
 
 export default function Index() {
   const { id } = useParams();
@@ -43,13 +45,7 @@ export default function Index() {
             ></div>
 
             <div className="index-main">
-              <p style={{ marginTop: 300 }}>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Distinctio, doloribus velit inventore corporis cupiditate
-                exercitationem saepe quod necessitatibus quo facere maiores
-                perspiciatis, debitis nemo molestias. Quis quibusdam nisi
-                voluptatibus exercitationem.
-              </p>
+              <MovieCategories />
             </div>
           </>
         ) : null}
@@ -57,6 +53,17 @@ export default function Index() {
         {pathname.includes(`/movies/${id}`) ? (
           <>
             {" "}
+            <h1
+              style={{
+                position: "absolute",
+                top: "10%",
+                left: "30%",
+                color: "red",
+                zIndex: 6,
+              }}
+            >
+              {movies[id].title}
+            </h1>
             <div
               className="index"
               style={{
@@ -64,10 +71,7 @@ export default function Index() {
                 right: 0,
               }}
             ></div>
-            <main className="index-review">
-              <h1 style={{ paddingBottom: "1em" }}>{movies[id].title}</h1>
-              <p>{movies[id].text}</p>
-            </main>
+            <MovieCard description={movies[id].text} />
           </>
         ) : null}
       </div>

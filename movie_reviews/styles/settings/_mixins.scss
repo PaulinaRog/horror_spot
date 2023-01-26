@@ -17,24 +17,16 @@
 }
 
 @mixin review {
-  width: 35vw;
-  height: 75vh;
+  perspective: 150rem;
+  width: 50vw;
+  height: 70vh;
   position: absolute;
-  left: 50%;
-  top: 50%;
-  backdrop-filter: blur(5px);
-  transform: translate(-50%, -50%);
+  left: 30%;
+  top: 12%;
   z-index: 5;
   flex-direction: column;
   font-weight: 200;
   padding: 2em;
-  overflow: hidden;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  &::-webkit-scrollbar {
-    display: none;
-    scrollbar-width: none;
-  }
 }
 
 @mixin button($padding) {
@@ -50,5 +42,30 @@
   }
   &:active {
     background-color: $red-transparent;
+  }
+}
+
+@mixin button2 {
+  border: 2px solid transparent;
+  background-color: black;
+  color: $white-inactive;
+  &:hover {
+    color: $white-fonts;
+    backdrop-filter: blur(10px);
+    border: 2px solid $red;
+  }
+  &:active {
+    background-color: $red-transparent;
+  }
+}
+
+@mixin card {
+  overflow: hidden;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    display: none;
+    scrollbar-width: none;
   }
 }

@@ -6,24 +6,19 @@ import movies from "../utils/MoviesList";
 export default function Movies({}) {
   const scrollRef = useRef();
   const navigate = useNavigate();
-  const [scrollPosition, setScrollPosition] = useState(0);
 
   const handleClick = (e) => {
     navigate(e.target.id);
   };
 
   const handleScrollDown = (e) => {
-    console.log(scrollRef.current.scrollTop);
     e.preventDefault();
-    setScrollPosition(scrollRef.current.scrollTop + 500);
-    scrollRef.current.scrollTop = scrollPosition + 500;
+    scrollRef.current.scrollTop = scrollRef.current.scrollTop + 500;
   };
 
   const handleScrollUp = (e) => {
-    console.log(scrollRef.current.scrollTop);
     e.preventDefault();
-    setScrollPosition(scrollRef.current.scrollTop - 500);
-    scrollRef.current.scrollTop = scrollPosition - 500;
+    scrollRef.current.scrollTop = scrollRef.current.scrollTop - 500;
   };
 
   return (
@@ -46,19 +41,11 @@ export default function Movies({}) {
         <button className="movies-nav" onClick={handleScrollUp}>
           <i className="fa-solid fa-angle-up"></i>
         </button>
-        <div className="drip"></div>
-        <div className="drip-1"></div>
-        <div className="drip-2"></div>
-        <div className="drip-3"></div>
       </div>
       <div className="movies-btn">
         <button className="movies-nav" onClick={handleScrollDown}>
           <i className="fa-solid fa-angle-down"></i>
         </button>
-        <div className="drip"></div>
-        <div className="drip-1"></div>
-        <div className="drip-2"></div>
-        <div className="drip-3"></div>
       </div>
     </>
   );

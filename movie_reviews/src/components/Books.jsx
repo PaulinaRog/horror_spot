@@ -72,32 +72,42 @@ export default function () {
           <div className="drip-2"></div>
           <div className="drip-3"></div>
         </div>
-        <img
-          src={books[first].src}
-          id={books[first].id}
-          onClick={handleClick}
-          className="books-img"
-        />
-        <img
-          src={books[second].src}
-          id={books[second].id}
-          onClick={handleClick}
-          className="books-img"
-        />
+        <div style={{ position: "relative" }}>
+          <img
+            src={books[first].src}
+            id={books[first].id}
+            onClick={handleClick}
+            className="books-img btn"
+          />
+
+          <div className="drip"></div>
+          <div className="drip-1"></div>
+          <div className="drip-2"></div>
+          <div className="drip-3"></div>
+        </div>
+        <div style={{ position: "relative" }}>
+          <img
+            src={books[second].src}
+            id={books[second].id}
+            onClick={handleClick}
+            className="books-img btn"
+          />
+
+          <div className="drip"></div>
+          <div className="drip-1"></div>
+          <div className="drip-2"></div>
+          <div className="drip-3"></div>
+        </div>
         <img
           src={books[third].src}
           id={books[third].id}
           onClick={handleClick}
-          className="books-img"
+          className="books-img btn"
         />
         <div style={nextStyle && nextStyle}>
           <button onClick={handleNext} className="btn">
             Next
           </button>
-          <div className="drip"></div>
-          <div className="drip-1"></div>
-          <div className="drip-2"></div>
-          <div className="drip-3"></div>
         </div>
       </div>
     </>

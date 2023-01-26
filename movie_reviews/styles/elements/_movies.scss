@@ -42,18 +42,11 @@
     height: 2em;
     width: 15.25vw;
     font-size: 30px;
-    background-color: $red-transparent;
     backdrop-filter: blur(10px);
     display: flex;
     justify-content: center;
     align-items: center;
-    color: $white-inactive;
-    &:hover {
-      color: $white-fonts;
-    }
-    &:active {
-      background-color: $red;
-    }
+    @include button2;
   }
   &-btn {
     position: absolute;
@@ -68,5 +61,59 @@
     top: 15px;
     z-index: 5;
     margin-left: -5px;
+  }
+
+  &-details-btn {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    padding: 0.5em 1em;
+    width: 150px;
+    @include button2;
+  }
+
+  &-categories {
+    position: absolute;
+    top: 40%;
+    width: 70%;
+    gap: 2em;
+    display: flex;
+    flex-wrap: wrap;
+    left: 13%;
+
+    &-button {
+      padding: 0.5em 1em;
+      width: 200px;
+      @include button2;
+    }
+  }
+
+  &-scroll-review {
+    position: absolute;
+    bottom: 0;
+    left: 35%;
+    @include button2;
+  }
+}
+
+.card {
+  @include review;
+
+  &-side {
+    height: 75%;
+    transition: all 0.8s ease;
+    backface-visibility: hidden;
+    position: absolute;
+    top: 5%;
+    left: 0;
+    width: 70%;
+    padding: 2em;
+    background-color: $transparent-bg;
+    @include card;
+    border: 2px solid $red;
+  }
+  &-back {
+    transform: rotateY(-180deg);
+    background-color: $transparent-bg;
   }
 }

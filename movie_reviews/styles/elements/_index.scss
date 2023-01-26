@@ -24,10 +24,6 @@
     position: absolute;
   }
 
-  &-review {
-    @include review;
-    background-color: $transparent-bg;
-  }
   &-main {
     @include review;
     text-align: center;

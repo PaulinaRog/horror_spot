@@ -59,3 +59,12 @@
     width: 120vw;
   }
 }
+
+@keyframes rotate {
+  from {
+    transform: unset;
+  }
+  to {
+    transform: rotateY(180deg);
+  }
+}
