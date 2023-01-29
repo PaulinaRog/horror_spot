@@ -65,6 +65,21 @@
     transform: unset;
   }
   to {
-    transform: rotateY(180deg);
+    transform: rotateYę(180deg);
+  }
+}
+
+@keyframes appear {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+  }
+  30% {
+    visibility: hidden;
+    opacity: 0;
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
   }
 }

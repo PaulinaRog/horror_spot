@@ -26,3 +26,28 @@ button {
   font-family: $font-main;
   color: $white-inactive;
 }
+
+h2 {
+  font-size: 25px;
+  font-weight: 500;
+  color: red;
+  text-transform: uppercase;
+}
+
+h3 {
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  margin-top: 20px;
+  font-weight: 500;
+}
+
+.tooltip {
+  position: absolute;
+  top: 50%;
+  right: 35px;
+  z-index: 10;
+  width: 80px;
+  transform: translateY(-50%);
+  font-size: 13px;
+  animation: appear 1.2s linear;
+}

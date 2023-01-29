@@ -14,11 +14,20 @@ export default function Index() {
   const { pathname } = useLocation();
   const [width, setWidth] = useState(null);
   const [animation, setAnimation] = useState(null);
+  const [copyrights, setCopyrights] = useState({ display: "none" });
 
   useEffect(() => {
     setAnimation("width 2s ease");
     setWidth("120vw");
   }, []);
+
+  const handleShowCopyrights = () => {
+    setCopyrights({ display: "block" });
+  };
+
+  const handleHideCopyrights = () => {
+    setCopyrights({ display: "none" });
+  };
 
   return (
     <>
@@ -53,17 +62,16 @@ export default function Index() {
         {pathname.includes(`/movies/${id}`) ? (
           <>
             {" "}
-            <h1
+            <h2
               style={{
                 position: "absolute",
                 top: "10%",
-                left: "30%",
-                color: "red",
+                left: "35%",
                 zIndex: 6,
               }}
             >
               {movies[id].title}
-            </h1>
+            </h2>
             <div
               className="index"
               style={{
@@ -72,6 +80,23 @@ export default function Index() {
               }}
             ></div>
             <MovieCard description={movies[id].text} />
+            <p style={copyrights} className="movies-copyrights">
+              Warner Bros Studios
+            </p>
+            <p
+              onMouseEnter={handleShowCopyrights}
+              onMouseLeave={handleHideCopyrights}
+              style={{
+                position: "absolute",
+                bottom: 20,
+                right: 20,
+                color: "white",
+                cursor: "pointer",
+                zIndex: 7,
+              }}
+            >
+              ©
+            </p>
           </>
         ) : null}
       </div>

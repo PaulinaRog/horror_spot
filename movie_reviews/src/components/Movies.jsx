@@ -5,11 +5,6 @@ import movies from "../utils/MoviesList";
 
 export default function Movies({}) {
   const scrollRef = useRef();
-  const navigate = useNavigate();
-
-  const handleClick = (e) => {
-    navigate(e.target.id);
-  };
 
   const handleScrollDown = (e) => {
     e.preventDefault();
@@ -26,14 +21,7 @@ export default function Movies({}) {
       <div className="movies" ref={scrollRef}>
         {movies.map((movie) => {
           return (
-            <div key={movie.id} className="movies-container">
-              <img
-                className="movies-poster"
-                src={movie.src}
-                onClick={handleClick}
-                id={movie.id}
-              />
-            </div>
+            <SingleMovie id={movie.id} src={movie.src} title={movie.title} />
           );
         })}
       </div>
@@ -46,6 +34,33 @@ export default function Movies({}) {
         <button className="movies-nav" onClick={handleScrollDown}>
           <i className="fa-solid fa-angle-down"></i>
         </button>
+      </div>
+    </>
+  );
+}
+
+function SingleMovie({ id, src, title }) {
+  const navigate = useNavigate();
+  const [style, setStyle] = useState({ display: "none" });
+
+  const handleClick = (e) => {
+    navigate(e.target.id);
+  };
+
+  return (
+    <>
+      <div key={id} className="movies-container">
+        <img
+          className="movies-poster"
+          onMouseOver={() => setStyle({ display: "block" })}
+          onMouseLeave={() => setStyle({ display: "none" })}
+          src={src}
+          onClick={handleClick}
+          id={id}
+        />
+        <div style={style} id={id} className="tooltip">
+          <p>{title}</p>
+        </div>
       </div>
     </>
   );
