@@ -18,7 +18,7 @@ export default function App() {
             <Route path=":id" element={<MoviesPage />} />
           </Route>
           <Route path="tvseries" element={<TvSeriesPage />}>
-            <Route path=":id" />
+            <Route path=":id" element={<TvSeriesPage />} />
           </Route>
           <Route path="games" element={<GamesPage />}>
             <Route path=":id" />

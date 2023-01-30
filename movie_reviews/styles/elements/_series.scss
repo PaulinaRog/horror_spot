@@ -26,29 +26,6 @@
   font-weight: 300;
 }
 
-// .series {
-//   width: 40vw;
-//   height: 90vh;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%);
-//   position: relative;
-//   shape-outside: circle(50%);
-// }
-
-// #visible-scrollbox {
-//   position: absolute;
-//   background: black;
-//   top: 50%;
-//   transform: translate(-50%, -50%);
-//   left: 0;
-//   width: 80vh;
-//   height: 80vh;
-//   shape-outside: circle(50%);
-//   border-radius: 50%;
-//   border: 30px solid $red-transparent;
-// }
-
 #visible-scrollbox {
   position: absolute;
   background: black;
@@ -58,10 +35,11 @@
   left: 70%;
   transform: translate(-50%, -50%);
   overflow: hidden;
+  z-index: 1;
 }
 
 #content {
-  position: relative;
+  position: absolute;
   left: -80px;
   width: 70vw;
 }
@@ -85,6 +63,7 @@
   overflow-y: scroll;
   overflow-x: hidden;
   scroll-behavior: smooth;
+
   &::-webkit-scrollbar {
     display: none;
     scrollbar-width: none;
@@ -99,9 +78,14 @@
   width: 230px;
   height: 150px;
   object-fit: cover;
+  position: relative;
+  cursor: pointer;
+  z-index: 9;
+  pointer-events: all;
 
   &-container {
     padding-bottom: 30px;
+    position: relative;
   }
 }
 
