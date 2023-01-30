@@ -5,35 +5,11 @@ import bg5 from "../assets/bg5.png";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import movies from "../utils/MoviesList";
 import { useRef } from "react";
+import Series from "../components/Series";
 
 export default function TvSeriesPage() {
   const { pathname } = useLocation();
   const { id } = useParams();
-  const navigate = useNavigate();
-  const [cursor, setCursor] = useState(null);
-
-  const scrollbox = useRef();
-  const scrollCircle = useRef();
-  const content = useRef();
-
-  const handleClick = (event) => {
-    event.stopPropagation();
-    navigate(`/tvseries/${id}`);
-  };
-
-  const handleScroll = () => {
-    content.current.style.top = "-" + scrollbox.current.scrollTop + "px";
-    scrollCircle.current.style.paddingTop =
-      scrollbox.current.scrollTop * 2 + "px";
-  };
-
-  const handleScrollDown = () => {
-    scrollbox.current.scrollTop = scrollbox.current.scrollTop + 500;
-  };
-
-  const handleScrollUp = () => {
-    scrollbox.current.scrollTop = scrollbox.current.scrollTop - 500;
-  };
 
   return (
     <>
@@ -42,53 +18,36 @@ export default function TvSeriesPage() {
         style={{ backgroundImage: `url(${ahs})` }}
       ></div>
       <div className="bg-black" style={{ backgroundImage: `url(${bg5})` }}>
+        <Series />
         {pathname === "/tvseries" ? (
           <>
             <h1 className="horror-title header-title" title="seriale">
               seriale
             </h1>
-            <button
-              style={{ position: "absolute", top: 0, right: 0 }}
-              onClick={handleScrollUp}
-            >
-              scroll up
-            </button>
-            <div className="series">
-              <div id="visible-scrollbox">
-                <div id="content" ref={content}>
-                  <div id="scroll-circle" ref={scrollCircle}></div>
-                  {movies.map((movie) => {
-                    return (
-                      <div
-                        key={movie.id}
-                        className="series-img-container"
-                        style={{ pointerEvents: "all" }}
-                      >
-                        <img
-                          onClick={handleClick}
-                          src={movie.src}
-                          id={movie.id}
-                          className="series-img"
-                        />
-                        <br />
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-            <div id="control-scrollbox" ref={scrollbox} onScroll={handleScroll}>
-              <div id="scroll-length"></div>
-            </div>
-            <button
-              style={{ position: "absolute", bottom: 0, right: 0 }}
-              onClick={handleScrollDown}
-            >
-              scroll down
-            </button>
           </>
         ) : null}
-        <div className="circle"></div>
+        {pathname.includes(`/tvseries/${id}`) ? (
+          <>
+            <div className="series-menu-container">
+              <h2 className="series-title">{movies[id].title}</h2>
+              <div className="series-menu-container-buttons">
+                <button className="series-menu-container-button">review</button>
+                <button className="series-menu-container-button">
+                  details
+                </button>
+                <button className="series-menu-container-button">
+                  trailer
+                </button>
+              </div>
+            </div>
+            <div className="circle">
+              <div className="series-review">
+                {" "}
+                <p className="series-text">{movies[id].text}</p>
+              </div>
+            </div>
+          </>
+        ) : null}
       </div>
       <Nav />
     </>

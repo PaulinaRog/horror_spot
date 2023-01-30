@@ -26,9 +26,60 @@
   font-weight: 300;
 }
 
+.series {
+  &-title {
+    text-shadow: 2px 2px 2px black, 2px 2px 2px black;
+    width: 250px;
+    text-align: center;
+  }
+
+  &-scroll-button {
+    width: 150px;
+    @include button2;
+    padding: 10px 0;
+  }
+
+  &-menu-container {
+    position: absolute;
+    top: 50%;
+    left: 15%;
+    transform: translate(-50%, -50%);
+
+    &-buttons {
+      display: flex;
+      flex-direction: column;
+      margin-top: 2em;
+      gap: 1em;
+      align-items: center;
+    }
+
+    &-button {
+      width: 150px;
+      @include button2;
+      padding: 10px 0;
+    }
+  }
+
+  &-review {
+    width: 85%;
+    top: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    height: 75%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    margin: auto;
+    &::-webkit-scrollbar {
+      display: none;
+      scrollbar-width: none;
+    }
+  }
+}
+
 #visible-scrollbox {
   position: absolute;
-  background: black;
   width: 60vw;
   height: 88vh;
   top: 50%;
@@ -94,12 +145,12 @@
 
 .circle {
   width: 85vh;
-  height: 85vh;
-  border-radius: 50%;
-  border: 30px solid $red-transparent;
+  height: 75vh;
+  border-radius: 20%;
+  border: 2px solid $red;
   position: absolute;
   transform: translate(-50%, -50%);
-  top: 50%;
+  top: 52%;
   left: 50%;
   z-index: 5;
 }
