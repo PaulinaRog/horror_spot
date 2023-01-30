@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Nav from "../components/Nav";
 import ahs from "../assets/ahs2.jpg";
 import bg5 from "../assets/bg5.png";
@@ -10,6 +10,7 @@ export default function TvSeriesPage() {
   const { pathname } = useLocation();
   const { id } = useParams();
   const navigate = useNavigate();
+  const [cursor, setCursor] = useState(null);
 
   const scrollbox = useRef();
   const scrollCircle = useRef();

@@ -35,12 +35,12 @@
   left: 70%;
   transform: translate(-50%, -50%);
   overflow: hidden;
-  z-index: 1;
+  scroll-behavior: smooth;
 }
 
 #content {
   position: absolute;
-  left: -80px;
+  left: -100px;
   width: 70vw;
 }
 
@@ -56,9 +56,9 @@
 #control-scrollbox {
   position: absolute;
   top: 50%;
-  left: 70%;
-  transform: translate(-50%, -50%);
-  width: 60vw;
+  right: 0;
+  transform: translatey(-50%);
+  width: 5vw;
   height: 88vh;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -67,6 +67,9 @@
   &::-webkit-scrollbar {
     display: none;
     scrollbar-width: none;
+  }
+  &:hover {
+    cursor: url("../src/assets/scroll.png"), ns-resize;
   }
 }
 
