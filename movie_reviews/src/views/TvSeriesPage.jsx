@@ -20,21 +20,11 @@ export default function TvSeriesPage() {
     navigate(`/tvseries/${id}`);
   };
 
-  const handleScroll = useMemo(
-    () => () => {
-      content.current.style.top = "-" + scrollbox.current.scrollTop + "px";
-      scrollCircle.current.style.paddingTop =
-        scrollbox.current.scrollTop * 2 + "px";
-    },
-    [scrollbox, scrollCircle, content]
-  );
-
-  useEffect(() => {
-    scrollbox.current.addEventListener("scroll", handleScroll);
-    return () => {
-      scrollbox.current.removeEventListener("scroll", handleScroll);
-    };
-  }, [handleScroll, scrollbox]);
+  const handleScroll = () => {
+    content.current.style.top = "-" + scrollbox.current.scrollTop + "px";
+    scrollCircle.current.style.paddingTop =
+      scrollbox.current.scrollTop * 2 + "px";
+  };
 
   const handleScrollDown = () => {
     scrollbox.current.scrollTop = scrollbox.current.scrollTop + 500;
@@ -69,12 +59,12 @@ export default function TvSeriesPage() {
                   {movies.map((movie) => {
                     return (
                       <div
-                        onClick={handleClick}
                         key={movie.id}
                         className="series-img-container"
                         style={{ pointerEvents: "all" }}
                       >
                         <img
+                          onClick={handleClick}
                           src={movie.src}
                           id={movie.id}
                           className="series-img"
@@ -86,7 +76,7 @@ export default function TvSeriesPage() {
                 </div>
               </div>
             </div>
-            <div id="control-scrollbox" ref={scrollbox}>
+            <div id="control-scrollbox" ref={scrollbox} onScroll={handleScroll}>
               <div id="scroll-length"></div>
             </div>
             <button

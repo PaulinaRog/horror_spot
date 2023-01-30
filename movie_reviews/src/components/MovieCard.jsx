@@ -68,9 +68,8 @@ export default function MovieCard({ description }) {
               height="315"
               src="https://www.youtube.com/embed/rgrWXTz_8eU"
               title="YouTube video player"
-              frameborder="0"
               allow="accelerometer; web-share"
-              allowfullscreen="true"
+              allowFullScreen={true}
             ></iframe>
           </div>
         </div>
