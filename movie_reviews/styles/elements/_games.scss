@@ -1,0 +1,21 @@
+.games {
+  position: absolute;
+  bottom: 2%;
+  left: 15%;
+  width: 75%;
+  height: 200px;
+  z-index: 5;
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  gap: 20px;
+
+  &-img {
+    width: 250px;
+    height: 150px;
+    object-fit: cover;
+  }
+}

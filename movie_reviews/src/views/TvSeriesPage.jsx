@@ -6,6 +6,8 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import movies from "../utils/MoviesList";
 import { useRef } from "react";
 import Series from "../components/Series";
+import MovieCategories from "../components/MovieCategories";
+import SeriesCard from "../components/SeriesCard";
 
 export default function TvSeriesPage() {
   const { pathname } = useLocation();
@@ -24,28 +26,12 @@ export default function TvSeriesPage() {
             <h1 className="horror-title header-title" title="seriale">
               seriale
             </h1>
+            <MovieCategories />
           </>
         ) : null}
         {pathname.includes(`/tvseries/${id}`) ? (
           <>
-            <div className="series-menu-container">
-              <h2 className="series-title">{movies[id].title}</h2>
-              <div className="series-menu-container-buttons">
-                <button className="series-menu-container-button">review</button>
-                <button className="series-menu-container-button">
-                  details
-                </button>
-                <button className="series-menu-container-button">
-                  trailer
-                </button>
-              </div>
-            </div>
-            <div className="circle">
-              <div className="series-review">
-                {" "}
-                <p className="series-text">{movies[id].text}</p>
-              </div>
-            </div>
+            <SeriesCard id={id} />
           </>
         ) : null}
       </div>

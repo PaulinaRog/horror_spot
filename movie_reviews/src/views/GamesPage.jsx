@@ -2,6 +2,7 @@ import React from "react";
 import Nav from "../components/Nav";
 import mortuary from "../assets/mortuaryAssistant.png";
 import bg10 from "../assets/bg10.png";
+import Games from "../components/Games";
 
 export default function GamesPage() {
   return (
@@ -21,6 +22,7 @@ export default function GamesPage() {
       <h1 className="horror-title header-title" title="gry">
         gry
       </h1>
+      <Games />
     </>
   );
 }

@@ -52,10 +52,7 @@ export default function Index() {
                 width: width && width,
               }}
             ></div>
-
-            <div className="index-main">
-              <MovieCategories />
-            </div>
+            <MovieCategories />
           </>
         ) : null}
         <div className="index-gradient"></div>

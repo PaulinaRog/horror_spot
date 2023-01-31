@@ -34,7 +34,7 @@
   }
 
   &-scroll-button {
-    width: 150px;
+    width: 100px;
     @include button2;
     padding: 10px 0;
   }
@@ -61,20 +61,33 @@
   }
 
   &-review {
-    width: 85%;
-    top: 50%;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    height: 75%;
     overflow-y: scroll;
     overflow-x: hidden;
     scroll-behavior: smooth;
-    margin: auto;
     &::-webkit-scrollbar {
       display: none;
       scrollbar-width: none;
     }
+  }
+  &-vid {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 560px;
+    display: none;
+  }
+  &-text {
+    position: relative;
+    top: 7%;
+    left: 5%;
+    width: 90%;
+    margin-bottom: 5em;
+    color: $white-inactive;
+  }
+
+  &-details p {
+    color: $white-inactive;
   }
 }
 
@@ -133,7 +146,7 @@
   height: 150px;
   object-fit: cover;
   position: relative;
-  cursor: pointer;
+  cursor: url(../src/assets/knife-mid.png), pointer;
   z-index: 9;
   pointer-events: all;
 
@@ -143,14 +156,31 @@
   }
 }
 
-.circle {
-  width: 85vh;
-  height: 75vh;
-  border-radius: 20%;
-  border: 2px solid $red;
+.series-card {
+  width: 95vh;
+  height: 85vh;
   position: absolute;
-  transform: translate(-50%, -50%);
-  top: 52%;
-  left: 50%;
+  top: 10%;
+  left: 28%;
+  perspective: 200rem;
   z-index: 5;
+  @include card;
+
+  &-side {
+    transition: all 0.8s ease;
+    backface-visibility: hidden;
+    width: 75vh;
+    height: 65vh;
+    padding: 2em;
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    background: linear-gradient(135deg, black, rgb(51, 51, 51));
+    border: 2px solid $red;
+    border-radius: 20%;
+  }
+
+  &-back {
+    transform: rotateY(-180deg);
+  }
 }

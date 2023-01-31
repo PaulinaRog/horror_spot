@@ -76,12 +76,14 @@
 
   &-categories {
     position: absolute;
-    top: 40%;
-    width: 70%;
+    top: 50%;
+    width: 30%;
     gap: 2em;
     display: flex;
     flex-wrap: wrap;
-    left: 13%;
+    left: 50%;
+    z-index: 6;
+    transform: translate(-50%, -50%);
 
     &-button {
       padding: 0.5em 1em;

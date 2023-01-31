@@ -37,7 +37,7 @@ export default function Series() {
         className="series-scroll-button"
         onClick={handleScrollUp}
       >
-        scroll up
+        <i className="fa-solid fa-angle-up"></i>
       </button>
       <div className="series">
         <div id="visible-scrollbox">
@@ -71,7 +71,7 @@ export default function Series() {
         className="series-scroll-button"
         onClick={handleScrollDown}
       >
-        scroll down
+        <i className="fa-solid fa-angle-down"></i>
       </button>
     </>
   );
