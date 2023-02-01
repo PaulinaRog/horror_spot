@@ -21,7 +21,7 @@ export default function App() {
             <Route path=":id" element={<TvSeriesPage />} />
           </Route>
           <Route path="games" element={<GamesPage />}>
-            <Route path=":id" />
+            <Route path=":id" element={<GamesPage />} />
           </Route>
           <Route path="books" element={<BooksPage />}>
             <Route path=":id" element={<BooksPage />} />

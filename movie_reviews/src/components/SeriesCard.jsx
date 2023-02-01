@@ -4,30 +4,30 @@ import { useState, useRef } from "react";
 
 export default function SeriesCard({ id }) {
   const [front, setFront] = useState(null);
-  const [details, setDetails] = useState({ transform: "rotateY(180deg)" });
-  const [trailer, setTrailer] = useState({ transform: "rotateY(180deg)" });
+  const [details, setDetails] = useState({ transform: "rotateX(180deg)" });
+  const [trailer, setTrailer] = useState({ transform: "rotateX(180deg)" });
   const [display, setDisplay] = useState({ display: "none" });
 
   const scrollRef = useRef();
 
   const handleDetails = () => {
-    setFront({ transform: "rotateY(180deg)" });
-    setDetails({ transform: "rotateY(0deg)" });
-    setTrailer({ transform: "rotateY(180deg)" });
+    setFront({ transform: "rotateX(180deg)" });
+    setDetails({ transform: "rotateX(0deg)" });
+    setTrailer({ transform: "rotateX(180deg)" });
     setDisplay({ display: "none" });
   };
 
   const handleReview = () => {
-    setFront({ transform: "rotateY(0deg)" });
-    setDetails({ transform: "rotateY(180deg)" });
-    setTrailer({ transform: "rotateY(180deg)" });
+    setFront({ transform: "rotateX(0deg)" });
+    setDetails({ transform: "rotateX(180deg)" });
+    setTrailer({ transform: "rotateX(180deg)" });
     setDisplay({ display: "none" });
   };
 
   const handleTrailer = () => {
-    setFront({ transform: "rotateY(180deg)" });
-    setTrailer({ transform: "rotateY(0deg)" });
-    setDetails({ transform: "rotateY(180deg)" });
+    setFront({ transform: "rotateX(180deg)" });
+    setTrailer({ transform: "rotateX(0deg)" });
+    setDetails({ transform: "rotateX(180deg)" });
     setTimeout(() => {
       setDisplay({ display: "block" });
       clearTimeout();
