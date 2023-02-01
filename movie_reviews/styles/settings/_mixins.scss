@@ -48,6 +48,7 @@
   border: 2px solid transparent;
   background-color: black;
   color: $white-inactive;
+  transition: all 0.5s ease;
   &:hover {
     color: $white-fonts;
     backdrop-filter: blur(10px);

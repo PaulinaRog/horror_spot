@@ -1,20 +1,87 @@
-.books-img {
-  width: 150px;
-  height: 225px;
-  position: relative;
-  &:hover {
-    // height: 250px;
-    // width: 175px;
-    // margin: -12.5px;
-    cursor: url("../src/assets/knife-mid.png"), auto;
-  }
-}
-.books-content {
+.books {
   position: absolute;
+  bottom: 5%;
+  right: 5%;
   z-index: 5;
-  width: 600px;
-  top: 100px;
-  left: 200px;
-  background-color: $black-semi;
-  padding: 2em;
+  height: 225px;
+  display: flex;
+  gap: 20px;
+  width: 37vw;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  transition: all 1s ease;
+
+  &::-webkit-scrollbar {
+    display: none;
+    scrollbar-width: none;
+  }
+
+  &-img {
+    width: 150px;
+    height: 225px;
+    position: relative;
+    &:hover {
+      // height: 250px;
+      // width: 175px;
+      // margin: -12.5px;
+      cursor: url("../src/assets/knife-mid.png"), auto;
+    }
+  }
+  &-content {
+    position: absolute;
+    z-index: 5;
+    width: 35vw;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10%;
+    padding: 2em;
+    height: 70%;
+    overflow-y: scroll;
+    border-radius: 1em;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    background: linear-gradient(135deg, black, rgb(51, 51, 51));
+    border: 2px solid $red;
+
+    &::-webkit-scrollbar {
+      display: none;
+      scrollbar-width: none;
+    }
+  }
+
+  &-btn,
+  &-btn1 {
+    height: 225px;
+    position: absolute;
+    bottom: 5%;
+    z-index: 5;
+    @include button2;
+    padding: 0 0.5em;
+  }
+  &-btn {
+    right: 2%;
+  }
+  &-btn1 {
+    right: 43%;
+  }
+
+  &-details {
+    position: absolute;
+    z-index: 5;
+    right: 25%;
+    top: 25%;
+  }
+
+  &-main-info {
+    top: 12%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 5;
+    position: absolute;
+    left: 73%;
+    transform: translateX(-50%);
+    width: 30%;
+  }
 }

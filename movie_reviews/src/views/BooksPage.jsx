@@ -14,7 +14,11 @@ export default function BooksPage() {
     <>
       <div
         className="bg-photo"
-        style={{ backgroundImage: `url(${book})`, left: "-40%" }}
+        style={{
+          backgroundImage: `url(${book})`,
+          left: "-40%",
+          filter: "brightness(50%)",
+        }}
       ></div>
       <div
         className="bg-black"
