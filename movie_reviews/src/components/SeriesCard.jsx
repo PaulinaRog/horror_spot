@@ -3,31 +3,31 @@ import movies from "../utils/MoviesList";
 import { useState, useRef } from "react";
 
 export default function SeriesCard({ id }) {
-  const [front, setFront] = useState(null);
-  const [details, setDetails] = useState({ transform: "rotateX(180deg)" });
-  const [trailer, setTrailer] = useState({ transform: "rotateX(180deg)" });
+  const [front, setFront] = useState({ zIndex: 7 });
+  const [details, setDetails] = useState({ transform: "rotateZ(360deg)" });
+  const [trailer, setTrailer] = useState({ transform: "rotateZ(360deg)" });
   const [display, setDisplay] = useState({ display: "none" });
 
   const scrollRef = useRef();
 
-  const handleDetails = () => {
-    setFront({ transform: "rotateX(180deg)" });
-    setDetails({ transform: "rotateX(0deg)" });
-    setTrailer({ transform: "rotateX(180deg)" });
+  const handleReview = () => {
+    setFront({ transform: "rotateZ(0deg)", zIndex: 7 });
+    setDetails({ transform: "rotateZ(360deg)" });
+    setTrailer({ transform: "rotateZ(360deg)" });
     setDisplay({ display: "none" });
   };
 
-  const handleReview = () => {
-    setFront({ transform: "rotateX(0deg)" });
-    setDetails({ transform: "rotateX(180deg)" });
-    setTrailer({ transform: "rotateX(180deg)" });
+  const handleDetails = () => {
+    setFront({ transform: "rotateZ(360deg)" });
+    setDetails({ transform: "rotateZ(0deg)", zIndex: 7 });
+    setTrailer({ transform: "rotateZ(360deg)" });
     setDisplay({ display: "none" });
   };
 
   const handleTrailer = () => {
-    setFront({ transform: "rotateX(180deg)" });
-    setTrailer({ transform: "rotateX(0deg)" });
-    setDetails({ transform: "rotateX(180deg)" });
+    setFront({ transform: "rotateZ(360deg)" });
+    setTrailer({ transform: "rotateZ(0deg)", zIndex: 7 });
+    setDetails({ transform: "rotateZ(360deg)" });
     setTimeout(() => {
       setDisplay({ display: "block" });
       clearTimeout();
@@ -119,21 +119,19 @@ export default function SeriesCard({ id }) {
         style={{
           position: "absolute",
           bottom: "5%",
-          left: "52%",
+          left: "59%",
           transform: "translateX(-50%)",
           width: 400,
           zIndex: 7,
+          display: "flex",
+          gap: 40,
         }}
       >
-        <button
-          className="movies-scroll-review"
-          onClick={handleScrollDown}
-          style={{ left: "45%" }}
-        >
-          <i className="fa-solid fa-angle-down"></i>
-        </button>
-        <button className="movies-scroll-review" onClick={handleScrollUp}>
+        <button className="series-scroll-review" onClick={handleScrollUp}>
           <i className="fa-solid fa-angle-up"></i>
+        </button>
+        <button className="series-scroll-review" onClick={handleScrollDown}>
+          <i className="fa-solid fa-angle-down"></i>
         </button>
       </div>
     </>

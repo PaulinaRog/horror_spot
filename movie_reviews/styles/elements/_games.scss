@@ -50,24 +50,76 @@
 
   &-card {
     position: absolute;
-    top: 10%;
-    left: 30%;
+    top: 5%;
+    left: 25%;
     z-index: 5;
-    width: 35%;
-    height: 50%;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    width: 50vw;
+    height: 58vh;
 
-    &::-webkit-scrollbar {
-      display: none;
-      scrollbar-width: none;
+    &-side {
+      transition: all 0.8s ease;
+      backface-visibility: hidden;
+      width: 40vw;
+      height: 45vh;
+      padding: 2em;
+      position: absolute;
+      background: linear-gradient(135deg, black, rgb(51, 51, 51));
+      border: 2px solid $red;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+
+      &::-webkit-scrollbar {
+        display: none;
+        scrollbar-width: none;
+      }
+    }
+
+    &-back {
+      transform: rotateX(-180deg);
     }
   }
 
   &-title {
     position: absolute;
     top: 20%;
-    right: 10%;
+    right: 7%;
     z-index: 5;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+  }
+
+  &-menu-container-buttons {
+    position: absolute;
+    top: 30%;
+    right: 8.5%;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    z-index: 5;
+    gap: 20px;
+  }
+
+  &-menu-container-button {
+    padding: 0.5em;
+    @include button2;
+    width: 150px;
+  }
+
+  &-scroll-buttons {
+    position: absolute;
+    top: 62%;
+    z-index: 5;
+    left: 43%;
+    display: flex;
+    gap: 40px;
+  }
+
+  &-scroll-button {
+    @include button2;
+    padding: 0 0.5em;
   }
 }

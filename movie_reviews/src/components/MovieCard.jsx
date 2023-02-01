@@ -62,7 +62,7 @@ export default function MovieCard({ description }) {
           <p>Lorem ipsum dolor sit amet consectetur.</p>
         </div>
         <div className="card-back card-side" style={trailer && trailer}>
-          <div style={display}>
+          <div style={display} className="series-vid">
             <iframe
               width="560"
               height="315"
