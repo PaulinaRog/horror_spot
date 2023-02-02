@@ -74,7 +74,7 @@ function SingleBook({ src, id, title, author }) {
     setImg({
       width: 150,
       height: 225,
-      marginTop: 10,
+      marginTop: 15,
       marginLeft: 10,
       marginRight: 10,
     });
