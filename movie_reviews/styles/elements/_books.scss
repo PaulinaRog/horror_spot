@@ -24,6 +24,7 @@
     position: relative;
     margin-left: 15px;
     margin-right: 15px;
+    transition: all 0.2s ease;
     &:hover {
       // height: 250px;
       // width: 175px;
@@ -41,14 +42,18 @@
     left: 0;
     margin-left: 10px;
     margin-right: 10px;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
 
     &:hover {
-      background-color: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(2px);
+      background-color: rgba(0, 0, 0, 0.599);
       margin-right: 2px;
       margin-left: 3px;
       width: 170px;
       height: 255px;
       cursor: url("../src/assets/knife-mid.png"), auto;
+      border-color: $red;
     }
 
     &-title {
