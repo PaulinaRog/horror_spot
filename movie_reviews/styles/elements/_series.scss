@@ -168,15 +168,41 @@
   cursor: url(../src/assets/knife-mid.png), pointer;
   z-index: 9;
   pointer-events: all;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    filter: blur(2px) brightness(50%);
+    width: 250px;
+    height: 170px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  &-title {
+    position: absolute;
+    top: 37%;
+    width: 200px;
+    left: 45vw;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    color: white;
+  }
 
   &-container {
-    padding-bottom: 30px;
+    // padding-bottom: 30px;
     position: relative;
   }
 }
 
 .series-card {
-  width: 60vw;
+  width: 54vw;
   height: 100vh;
   position: absolute;
   top: 0;
@@ -202,5 +228,29 @@
 
   &-back {
     transform: rotateZ(-360deg);
+  }
+}
+
+.fucking-title {
+  pointer-events: none;
+  &:hover {
+    &::before {
+      content: attr(name);
+      width: 150px;
+      position: absolute;
+      z-index: 10;
+      top: 50%;
+      transform: translateY(-50%);
+      margin-left: 50px;
+      color: white;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    &::after {
+      content: "";
+      border-right: 3px solid $red;
+      padding: 4em 0;
+      transition: all 0.5s ease;
+    }
   }
 }

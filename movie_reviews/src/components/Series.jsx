@@ -2,13 +2,13 @@ import React from "react";
 import movies from "../utils/MoviesList";
 import { useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { useState } from "react";
 
 export default function Series() {
   const scrollbox = useRef();
   const scrollCircle = useRef();
   const content = useRef();
 
-  const { id } = useParams();
   const navigate = useNavigate();
 
   const handleClick = (e) => {
@@ -48,14 +48,18 @@ export default function Series() {
                 <div
                   key={movie.id}
                   className="series-img-container"
-                  style={{ pointerEvents: "all" }}
+                  style={{
+                    pointerEvents: "all",
+                  }}
                 >
-                  <img
-                    onClick={handleClick}
-                    src={movie.src}
-                    id={movie.id}
-                    className="series-img"
-                  />
+                  <div className="fucking-title" name={movie.title}>
+                    <img
+                      onClick={handleClick}
+                      src={movie.src}
+                      id={movie.id}
+                      className="series-img"
+                    />
+                  </div>
                   <br />
                 </div>
               );
