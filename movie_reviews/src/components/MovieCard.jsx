@@ -93,7 +93,7 @@ export default function MovieCard({ description }) {
         <button
           className="movies-scroll-review"
           onClick={handleScrollDown}
-          style={{ left: "45%" }}
+          style={{ left: "40%" }}
         >
           <i className="fa-solid fa-angle-down"></i>
         </button>

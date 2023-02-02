@@ -21,7 +21,7 @@
   width: 50vw;
   height: 70vh;
   position: absolute;
-  left: 33%;
+  left: 30%;
   top: 12%;
   z-index: 5;
   flex-direction: column;
@@ -49,6 +49,7 @@
   background-color: black;
   color: $white-inactive;
   transition: all 0.5s ease;
+  border-radius: 5px;
   &:hover {
     color: $white-fonts;
     backdrop-filter: blur(10px);

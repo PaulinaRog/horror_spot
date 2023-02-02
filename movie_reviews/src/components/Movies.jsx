@@ -42,24 +42,55 @@ export default function Movies({}) {
 function SingleMovie({ id, src, title }) {
   const navigate = useNavigate();
   const [style, setStyle] = useState({ display: "none" });
+  const [img, setImg] = useState(null);
 
   const handleClick = (e) => {
     navigate(e.target.id);
   };
 
+  const handleMouseOver = (e) => {
+    setStyle({ display: "block" });
+    setImg({ width: "17vw", height: "22vh", marginTop: 2, marginBottom: 3 });
+  };
+
+  const handleMouseLeave = () => {
+    setStyle({ display: "none" });
+    setImg({ width: "15vw", height: "20vh", marginTop: 10, marginBottom: 10 });
+  };
+
   return (
     <>
       <div key={id} className="movies-container">
-        <img
-          className="movies-poster"
-          onMouseOver={() => setStyle({ display: "block" })}
-          onMouseLeave={() => setStyle({ display: "none" })}
-          src={src}
-          onClick={handleClick}
-          id={id}
-        />
-        <div style={style} id={id} className="tooltip">
-          <p>{title}</p>
+        <div
+          style={{
+            position: "relative",
+            width: "15vw",
+            height: "20vh",
+            marginTop: 10,
+            marginBottom: 10,
+          }}
+          className="movies-box"
+        >
+          <img
+            className="movies-poster"
+            onMouseOver={() => setStyle({ display: "block" })}
+            onMouseLeave={() => setStyle({ display: "none" })}
+            src={src}
+            id={id}
+            style={img && img}
+          />
+          <div
+            style={style}
+            onMouseOver={handleMouseOver}
+            onMouseLeave={handleMouseLeave}
+            onClick={handleClick}
+            id={id}
+            className="movies-title-hover"
+          >
+            <p style={style} className="movies-box-title">
+              {title}
+            </p>
+          </div>
         </div>
       </div>
     </>

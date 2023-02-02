@@ -1,5 +1,5 @@
 .movies {
-  height: 78vh;
+  height: 85vh;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -28,22 +28,57 @@
     position: relative;
     cursor: pointer;
     border-right: 3px solid transparent;
-    transition: border-width 1s ease;
+    transition: all 0.1s ease;
 
     &:hover {
-      border-width: 100px;
-      border-color: $red-transparent;
+      cursor: url("../src/assets/knife-mid.png"), auto;
+    }
+  }
+
+  &-title-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 7;
+    border-right: 3px solid transparent;
+    transition: all 0.05s ease;
+    &:hover {
+      border-color: $red;
       width: 17vw;
       height: 22vh;
       margin-top: 2px;
       margin-bottom: 3px;
+      background-color: rgba(0, 0, 0, 0.645);
+      backdrop-filter: blur(2px);
       cursor: url("../src/assets/knife-mid.png"), auto;
     }
   }
+
+  &-box {
+    position: relative;
+    width: 15vw;
+    height: 20vh;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    &-title {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 8;
+      color: white;
+      text-transform: uppercase;
+      width: 200px;
+      text-align: center;
+    }
+  }
+
   &-nav {
-    height: 2em;
+    padding: 0.5em 0;
     width: 15.25vw;
-    font-size: 30px;
     backdrop-filter: blur(10px);
     display: flex;
     justify-content: center;
@@ -68,7 +103,7 @@
   &-details-btn {
     position: absolute;
     top: 50%;
-    right: 0;
+    right: -10%;
     padding: 0.5em 1em;
     width: 150px;
     @include button2;
@@ -95,7 +130,7 @@
   &-scroll-review {
     position: absolute;
     bottom: 0;
-    left: 35%;
+    left: 30%;
     @include button2;
   }
 
@@ -125,7 +160,7 @@
     left: 0;
     width: 70%;
     padding: 2em;
-    // background-color: $transparent-bg;
+    border-radius: 1.5em;
     background: linear-gradient(135deg, black, rgb(51, 51, 51));
     @include card;
     border: 2px solid $red;

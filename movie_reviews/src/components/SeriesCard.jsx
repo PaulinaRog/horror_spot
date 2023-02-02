@@ -119,7 +119,7 @@ export default function SeriesCard({ id }) {
         style={{
           position: "absolute",
           bottom: "5%",
-          left: "59%",
+          left: "55%",
           transform: "translateX(-50%)",
           width: 400,
           zIndex: 7,

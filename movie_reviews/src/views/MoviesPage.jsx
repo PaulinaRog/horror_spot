@@ -62,9 +62,12 @@ export default function Index() {
             <h2
               style={{
                 position: "absolute",
-                top: "10%",
-                left: "35%",
+                top: "33%",
+                right: "5%",
                 zIndex: 6,
+                width: "20%",
+                textShadow: "2px 2px 2px black",
+                textAlign: "center",
               }}
             >
               {movies[id].title}
@@ -74,6 +77,7 @@ export default function Index() {
               style={{
                 backgroundImage: `url(${movies[id].src})`,
                 right: 0,
+                filter: "brightness(70%)",
               }}
             ></div>
             <MovieCard description={movies[id].text} />
