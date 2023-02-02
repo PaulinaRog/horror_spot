@@ -28,7 +28,7 @@
     position: relative;
     cursor: pointer;
     border-right: 3px solid transparent;
-    transition: all 0.1s ease;
+    transition: all 0.5s ease;
 
     &:hover {
       cursor: url("../src/assets/knife-mid.png"), auto;
@@ -43,7 +43,7 @@
     height: 100%;
     z-index: 7;
     border-right: 3px solid transparent;
-    transition: all 0.05s ease;
+    transition: all 0.3s ease;
     &:hover {
       border-color: $red;
       width: 17vw;

@@ -87,7 +87,7 @@ function SingleMovie({ id, src, title }) {
             id={id}
             className="movies-title-hover"
           >
-            <p style={style} className="movies-box-title">
+            <p style={style} className="movies-box-title" id={id}>
               {title}
             </p>
           </div>
