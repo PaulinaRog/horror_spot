@@ -1,9 +1,9 @@
-import mozdzen from "../src/assets/mozdzen.jpg";
-import it from "../src/assets/it-book.jpg";
-import pietno from "../src/assets/piętno.jpg";
-import lovecraft from "../src/assets/lovecraft.jpg";
-import masterton from "../src/assets/masterton.jpeg";
-import trup from "../src/assets/wybornyTrup.jpg";
+import mozdzen from "../assets/mozdzen.jpg";
+import it from "../assets/it-book.jpg";
+import pietno from "../assets/piętno.jpg";
+import lovecraft from "../assets/lovecraft.jpg";
+import masterton from "../assets/masterton.jpeg";
+import trup from "../assets/wybornyTrup.jpg";
 
 const books = [
   {
