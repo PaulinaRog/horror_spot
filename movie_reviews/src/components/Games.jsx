@@ -56,8 +56,8 @@ function SingleGame({ id, title, src }) {
   const handleMouseOver = () => {
     setStyle({ display: "block" });
     setImg({
-      width: 270,
-      height: 170,
+      width: "35vh",
+      height: "23vh",
       marginTop: 0,
       marginLeft: 3,
       marginRight: 2,
@@ -67,9 +67,9 @@ function SingleGame({ id, title, src }) {
   const handleMouseLeave = () => {
     setStyle({ display: "none" });
     setImg({
-      width: 250,
-      height: 150,
-      marginTop: 10,
+      width: "33vh",
+      height: "20vh",
+      marginTop: 15,
       marginLeft: 10,
       marginRight: 10,
     });
@@ -77,7 +77,7 @@ function SingleGame({ id, title, src }) {
 
   return (
     <>
-      <div style={{ width: 250, height: 150, position: "relative" }}>
+      <div style={{ width: "33vw", height: "23vh", position: "relative" }}>
         <img
           src={src}
           id={id}

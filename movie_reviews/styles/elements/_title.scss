@@ -29,6 +29,31 @@
   left: 30%;
 }
 
+.header-title-series,
+.header-title-books {
+  position: absolute;
+  z-index: 4;
+  top: 15%;
+  left: 40%;
+  font-weight: 300;
+}
+
+.header-title {
+  position: absolute;
+  z-index: 4;
+  top: 15%;
+  left: 43%;
+  font-weight: 300;
+}
+
+.header-title-games {
+  position: absolute;
+  z-index: 4;
+  top: 15%;
+  left: 45%;
+  font-weight: 300;
+}
+
 @keyframes glitch {
   2%,
   64% {

@@ -104,14 +104,16 @@ export default function SeriesCard({ id }) {
           style={trailer && trailer}
         >
           <div style={display} className="series-vid">
-            <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/rgrWXTz_8eU"
-              title="YouTube video player"
-              allow="accelerometer; web-share"
-              allowFullScreen={true}
-            ></iframe>
+            <figure>
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/rgrWXTz_8eU"
+                title="YouTube video player"
+                allow="accelerometer; web-share"
+                allowFullScreen={true}
+              ></iframe>
+            </figure>
           </div>
         </div>
       </div>

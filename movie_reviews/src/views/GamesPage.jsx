@@ -26,7 +26,7 @@ export default function GamesPage() {
       <Nav />
       {pathname === "/games" ? (
         <>
-          <h1 className="horror-title header-title" title="gry">
+          <h1 className="horror-title header-title-games" title="gry">
             gry
           </h1>
           <div className="games-buttons">

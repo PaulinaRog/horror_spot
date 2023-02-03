@@ -23,7 +23,7 @@ export default function TvSeriesPage() {
         <Series />
         {pathname === "/tvseries" ? (
           <>
-            <h1 className="horror-title header-title" title="seriale">
+            <h1 className="horror-title header-title-series" title="seriale">
               seriale
             </h1>
             <MovieCategories />

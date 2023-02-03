@@ -63,6 +63,7 @@ export default function MovieCard({ description }) {
         </div>
         <div className="card-back card-side" style={trailer && trailer}>
           <div style={display} className="series-vid">
+            <figure>
             <iframe
               width="560"
               height="315"
@@ -71,6 +72,7 @@ export default function MovieCard({ description }) {
               allow="accelerometer; web-share"
               allowFullScreen={true}
             ></iframe>
+            </figure>
           </div>
         </div>
         <button className="movies-details-btn" onClick={handleDetails}>

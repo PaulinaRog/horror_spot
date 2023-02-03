@@ -36,6 +36,7 @@ export default function () {
               id={book.id}
               title={book.title}
               author={book.author}
+              key={book.id}
             />
           );
         })}
@@ -61,8 +62,8 @@ function SingleBook({ src, id, title, author }) {
   const handleMouseOver = () => {
     setStyle({ display: "block" });
     setImg({
-      width: 170,
-      height: 255,
+      width: "23vh",
+      height: "34vh",
       marginTop: 0,
       marginLeft: 3,
       marginRight: 2,
@@ -72,8 +73,8 @@ function SingleBook({ src, id, title, author }) {
   const handleMouseLeave = () => {
     setStyle({ display: "none" });
     setImg({
-      width: 150,
-      height: 225,
+      width: "20vh",
+      height: "30vh",
       marginTop: 15,
       marginLeft: 10,
       marginRight: 10,
@@ -82,7 +83,7 @@ function SingleBook({ src, id, title, author }) {
 
   return (
     <>
-      <div style={{ position: "relative", height: 260, width: 150 }}>
+      <div style={{ position: "relative", height: "34vh", width: "20vh" }}>
         <img
           src={src}
           className="books-img"

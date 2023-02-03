@@ -28,7 +28,7 @@ export default function BooksPage() {
       {pathname.includes(id) ? <Book /> : null}
       {pathname === "/books" ? (
         <>
-          <h1 className="horror-title header-title" title="książki">
+          <h1 className="horror-title header-title-books" title="książki">
             książki
           </h1>
         </>

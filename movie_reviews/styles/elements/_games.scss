@@ -1,9 +1,9 @@
 .games {
   position: absolute;
-  bottom: 5%;
+  bottom: 3%;
   left: 15%;
   width: 75%;
-  height: 195px;
+  height: 24vh;
   z-index: 5;
   display: flex;
   overflow-x: scroll;
@@ -20,8 +20,8 @@
   }
 
   &-img {
-    width: 250px;
-    height: 150px;
+    width: 33vh;
+    height: 20vh;
     object-fit: cover;
     cursor: url(../src/assets/knife-mid.png), pointer;
     margin-right: 10px;
@@ -32,16 +32,16 @@
 
     &:hover {
       margin-top: 0;
-      width: 270px;
-      height: 170px;
+      width: 35vh;
+      height: 23vh;
       margin-right: 2px;
       margin-left: 3px;
     }
   }
 
   &-box {
-    width: 250px;
-    height: 150px;
+    width: 33vh;
+    height: 20vh;
     cursor: url(../src/assets/knife-mid.png), pointer;
     margin-right: 10px;
     margin-left: 10px;
@@ -57,8 +57,8 @@
     &:hover {
       border-color: $red;
       margin-top: 0;
-      width: 270px;
-      height: 170px;
+      width: 35vh;
+      height: 23vh;
       margin-right: 2px;
       margin-left: 3px;
       background-color: rgba(0, 0, 0, 0.634);
@@ -81,18 +81,21 @@
 
   &-scroll {
     position: absolute;
-    bottom: 7%;
+    bottom: calc(3% - 19px + 4vh);
     left: 12%;
     padding: 0 0.5em;
-    height: 150px;
+    height: 20vh;
     z-index: 5;
     @include button2;
   }
 
   &-buttons {
     position: absolute;
-    width: 43%;
+    width: 50%;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -142,24 +145,27 @@
   &-title {
     position: absolute;
     top: 20%;
-    right: 7%;
+    left: 85%;
     z-index: 5;
     width: 300px;
     display: flex;
     justify-content: center;
     text-align: center;
     align-items: center;
+    transform: translateX(-50%);
   }
 
   &-menu-container-buttons {
     position: absolute;
     top: 30%;
-    right: 8.5%;
+    left: 85vw;
     display: flex;
     flex-direction: column;
-    width: 200px;
+    align-items: center;
+    width: 300px;
     z-index: 5;
     gap: 20px;
+    transform: translateX(-50%);
   }
 
   &-menu-container-button {

@@ -32,14 +32,6 @@
   }
 }
 
-.header-title {
-  position: absolute;
-  z-index: 4;
-  top: 15%;
-  left: 43%;
-  font-weight: 300;
-}
-
 .series {
   &-title {
     text-shadow: 2px 2px 2px black, 2px 2px 2px black;
@@ -88,7 +80,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 560px;
+    width: 90%;
     display: none;
   }
   &-text {
@@ -157,12 +149,12 @@
 }
 
 #scroll-length {
-  height: 1300px;
+  height: 1600px;
 }
 
 .series-img {
-  width: 230px;
-  height: 150px;
+  width: 15vw;
+  height: 9.822vw;
   object-fit: cover;
   position: relative;
   cursor: url(../src/assets/knife-mid.png), pointer;
@@ -174,10 +166,10 @@
 
   &:hover {
     filter: blur(2px) brightness(50%);
-    width: 250px;
-    height: 170px;
-    margin-top: 0px;
-    margin-bottom: 0px;
+    width: 17vw;
+    height: 11.065vw;
+    margin-top: 0.6px;
+    margin-bottom: 0.3px;
   }
 
   &-title {
@@ -196,7 +188,6 @@
   }
 
   &-container {
-    // padding-bottom: 30px;
     position: relative;
   }
 }
@@ -214,11 +205,11 @@
   &-side {
     transition: all 0.8s ease;
     backface-visibility: hidden;
-    width: 80vh;
-    height: 70vh;
+    width: 84vh;
+    height: 65vh;
     padding: 1em;
     position: absolute;
-    top: 13%;
+    top: 15%;
     z-index: 5;
     left: 10%;
     background: linear-gradient(135deg, black, rgb(51, 51, 51));
@@ -241,7 +232,7 @@
       z-index: 10;
       top: 50%;
       transform: translateY(-50%);
-      margin-left: 50px;
+      margin-left: 3vw;
       color: white;
       text-transform: uppercase;
       text-align: center;
@@ -249,7 +240,7 @@
     &::after {
       content: "";
       border-right: 3px solid $red;
-      padding: 4em 0;
+      padding: 9.55vh 0;
       transition: all 0.5s ease;
     }
   }
