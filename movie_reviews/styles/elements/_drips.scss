@@ -38,6 +38,9 @@
   transition: height 0.5s ease;
   width: 100%;
   right: 0;
+  &:hover {
+    height: 10px;
+  }
 }
 
 .drip-1 {
@@ -49,6 +52,10 @@
   transition: height 0.6s ease;
   right: 0;
   top: 0;
+
+  &:hover {
+    height: 25px;
+  }
 }
 
 .drip-2 {
@@ -60,6 +67,10 @@
   transition: height 0.8s ease;
   left: 0;
   top: 0;
+
+  &:hover {
+    height: 60px;
+  }
 }
 
 .drip-3 {
@@ -72,6 +83,10 @@
   transition: height 0.3s ease;
   top: 0;
   right: 0;
+
+  &:hover {
+    height: 15px;
+  }
 }
 
 .btn,

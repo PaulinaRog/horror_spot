@@ -8,7 +8,6 @@ export default function MovieCard({ description }) {
   const [display, setDisplay] = useState({ display: "none" });
 
   const scrollRef = useRef();
-  console.log(scrollRef);
 
   const handleDetails = () => {
     setFront({ transform: "rotateY(180deg)" });
@@ -64,14 +63,14 @@ export default function MovieCard({ description }) {
         <div className="card-back card-side" style={trailer && trailer}>
           <div style={display} className="series-vid">
             <figure>
-            <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/rgrWXTz_8eU"
-              title="YouTube video player"
-              allow="accelerometer; web-share"
-              allowFullScreen={true}
-            ></iframe>
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/rgrWXTz_8eU"
+                title="YouTube video player"
+                allow="accelerometer; web-share"
+                allowFullScreen={true}
+              ></iframe>
             </figure>
           </div>
         </div>

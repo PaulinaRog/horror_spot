@@ -3,31 +3,31 @@ import movies from "../utils/MoviesList";
 import { useState, useRef } from "react";
 
 export default function SeriesCard({ id }) {
-  const [front, setFront] = useState({ zIndex: 7 });
-  const [details, setDetails] = useState({ transform: "rotateZ(360deg)" });
-  const [trailer, setTrailer] = useState({ transform: "rotateZ(360deg)" });
+  const [front, setFront] = useState(null);
+  const [details, setDetails] = useState({ transform: "rotateY(180deg)" });
+  const [trailer, setTrailer] = useState({ transform: "rotateY(180deg)" });
   const [display, setDisplay] = useState({ display: "none" });
 
   const scrollRef = useRef();
 
-  const handleReview = () => {
-    setFront({ transform: "rotateZ(0deg)", zIndex: 7 });
-    setDetails({ transform: "rotateZ(360deg)" });
-    setTrailer({ transform: "rotateZ(360deg)" });
+  const handleDetails = () => {
+    setFront({ transform: "rotateY(180deg)" });
+    setDetails({ transform: "rotateY(0deg)" });
+    setTrailer({ transform: "rotateY(180deg)" });
     setDisplay({ display: "none" });
   };
 
-  const handleDetails = () => {
-    setFront({ transform: "rotateZ(360deg)" });
-    setDetails({ transform: "rotateZ(0deg)", zIndex: 7 });
-    setTrailer({ transform: "rotateZ(360deg)" });
+  const handleReview = () => {
+    setFront({ transform: "rotateY(0deg)" });
+    setDetails({ transform: "rotateY(180deg)" });
+    setTrailer({ transform: "rotateY(180deg)" });
     setDisplay({ display: "none" });
   };
 
   const handleTrailer = () => {
-    setFront({ transform: "rotateZ(360deg)" });
-    setTrailer({ transform: "rotateZ(0deg)", zIndex: 7 });
-    setDetails({ transform: "rotateZ(360deg)" });
+    setFront({ transform: "rotateY(180deg)" });
+    setTrailer({ transform: "rotateY(0deg)" });
+    setDetails({ transform: "rotateY(180deg)" });
     setTimeout(() => {
       setDisplay({ display: "block" });
       clearTimeout();

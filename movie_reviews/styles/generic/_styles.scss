@@ -3,6 +3,7 @@ body {
   font-family: $font-main;
   font-size: 16px;
   color: $white-fonts;
+  background-color: black;
   @include desktops {
     font-size: 17px;
   }

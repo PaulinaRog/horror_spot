@@ -7,6 +7,9 @@ import MoviesPage from "./src/views/MoviesPage";
 import TvSeriesPage from "./src/views/TvSeriesPage";
 import GamesPage from "./src/views/GamesPage";
 import BooksPage from "./src/views/BooksPage";
+import News from "./src/views/News";
+import AboutUs from "./src/views/AboutUs";
+import Contact from "./src/views/Contact";
 
 export default function App() {
   return (
@@ -26,6 +29,9 @@ export default function App() {
           <Route path="books" element={<BooksPage />}>
             <Route path=":id" element={<BooksPage />} />
           </Route>
+          <Route path="news" element={<News />} />
+          <Route path="aboutus" element={<AboutUs />} />
+          <Route path="contact" element={<Contact />} />
         </Routes>
       </BrowserRouter>
     </>

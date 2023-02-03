@@ -18,6 +18,7 @@ export default function BooksPage() {
           backgroundImage: `url(${book})`,
           left: "-40%",
           filter: "brightness(50%)",
+          backgroundColor: "black",
         }}
       ></div>
       <div

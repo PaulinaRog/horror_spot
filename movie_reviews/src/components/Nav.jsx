@@ -64,6 +64,24 @@ export default function Nav() {
           <div className="drip-2"></div>
           <div className="drip-3"></div>
         </NavLink>
+        <NavLink to="/aboutus" style={{ position: "relative" }}>
+          <button className="nav-button">
+            <i className="fa-solid fa-skull"></i>
+          </button>
+          <div className="drip"></div>
+          <div className="drip-1"></div>
+          <div className="drip-2"></div>
+          <div className="drip-3"></div>
+        </NavLink>
+        <NavLink to="/contact" style={{ position: "relative" }}>
+          <button className="nav-button">
+            <i class="fa-regular fa-envelope-open"></i>
+          </button>
+          <div className="drip"></div>
+          <div className="drip-1"></div>
+          <div className="drip-2"></div>
+          <div className="drip-3"></div>
+        </NavLink>
       </div>
     </>
   );
