@@ -37,10 +37,10 @@
 
   &:hover {
     color: $white-fonts;
-    backdrop-filter: blur(10px);
+    // backdrop-filter: blur(10px);
   }
   &:active {
-    background-color: $red-transparent;
+    color: white;
   }
 }
 
