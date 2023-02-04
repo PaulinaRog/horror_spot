@@ -29,7 +29,9 @@ export default function App() {
           <Route path="books" element={<BooksPage />}>
             <Route path=":id" element={<BooksPage />} />
           </Route>
-          <Route path="news" element={<News />} />
+          <Route path="news" element={<News />}>
+            <Route path=":id" element={<News />} />
+          </Route>
           <Route path="aboutus" element={<AboutUs />} />
           <Route path="contact" element={<Contact />} />
         </Routes>

@@ -86,9 +86,9 @@
 
 @keyframes rotate {
   from {
-    transform: rotateZ(0deg);
+    transform: rotateY(-180deg);
   }
   to {
-    transform: rotateZ(360deg);
+    transform: rotateY(0deg);
   }
 }
