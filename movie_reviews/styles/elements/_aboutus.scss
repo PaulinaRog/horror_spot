@@ -6,4 +6,33 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
+  &-info {
+    padding: 1em;
+    width: 60vw;
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    height: 30vh;
+    overflow-y: scroll;
+  }
+
+  &-cards {
+    width: 70vw;
+    height: 30vh;
+    position: absolute;
+    bottom: 7%;
+    left: 15%;
+    display: flex;
+    gap: 30px;
+    overflow-x: scroll;
+  }
+
+  &-card {
+    height: 28vh;
+    width: 20vh;
+    background: linear-gradient(135deg, black, rgb(51, 51, 51));
+    border: 2px solid $red;
+    border-radius: 1.5em;
+  }
 }

@@ -75,7 +75,7 @@ export default function Nav() {
         </NavLink>
         <NavLink to="/contact" style={{ position: "relative" }}>
           <button className="nav-button">
-            <i class="fa-regular fa-envelope-open"></i>
+            <i className="fa-regular fa-envelope-open"></i>
           </button>
           <div className="drip"></div>
           <div className="drip-1"></div>

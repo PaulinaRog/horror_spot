@@ -76,8 +76,8 @@ function SingleBook({ src, id, title, author }) {
       width: "20vh",
       height: "30vh",
       marginTop: 15,
-      marginLeft: 10,
-      marginRight: 10,
+      marginLeft: 15,
+      marginRight: 15,
     });
   };
 
