@@ -6,4 +6,45 @@
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
+
+  &-form {
+    height: 75vh;
+    width: 30vw;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    border-radius: 1.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &-input {
+      width: 100%;
+      padding: 0.5em;
+      background-color: transparent;
+      border: none;
+      border-bottom: 2px solid $red;
+      outline: none;
+      color: $white-inactive;
+      font-family: $font-main;
+      font-size: 16px;
+    }
+
+    &-label {
+      margin-top: 40px;
+    }
+
+    &-textarea {
+      height: 20%;
+    }
+
+    &-send {
+      width: 150px;
+      align-self: flex-end;
+      @include button2;
+      margin-top: 60px;
+      padding: 0.5em 0;
+    }
+  }
 }

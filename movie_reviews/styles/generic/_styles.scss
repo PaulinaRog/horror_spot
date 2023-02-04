@@ -42,7 +42,7 @@ button {
 h2 {
   font-size: 25px;
   font-weight: 500;
-  color: red;
+  color: rgb(202, 0, 0);
   text-transform: uppercase;
 }
 
@@ -65,7 +65,9 @@ h3 {
   animation: appear 1.2s linear;
 }
 
-p {
+p,
+label,
+span {
   color: $white-inactive;
 }
 
