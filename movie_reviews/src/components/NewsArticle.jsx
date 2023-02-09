@@ -3,11 +3,31 @@ import { useRef } from "react";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import news from "../utils/NewsList";
+import supabase from "../services/SupabaseClient";
 
 export default function NewsArticle({ setScrollPosition, scrollposition }) {
   const { id } = useParams();
   const navigate = useNavigate();
   const scrollRef = useRef();
+
+  const [news, setNews] = useState(null);
+
+  useEffect(() => {
+    const getNews = async () => {
+      const { data, error } = await supabase
+        .from("news")
+        .select("*")
+        .eq("id", id)
+        .single();
+      if (error) {
+        console.log(error);
+      }
+      if (data) {
+        setNews(data);
+      }
+    };
+    getNews();
+  }, []);
 
   const handleNavigate = () => {
     setScrollPosition(scrollposition);
@@ -26,15 +46,15 @@ export default function NewsArticle({ setScrollPosition, scrollposition }) {
     <>
       <div className="news-window" ref={scrollRef}>
         <div className="news-article">
-          <img className="news-article-img" src={news[id - 1].src} />
-          <h3>{news[id - 1].title}</h3>
-          <p style={{ fontSize: 12, marginTop: -15 }}>{news[id - 1].added}</p>
+          <img className="news-article-img" src={news && news.src} />
+          <h3>{news && news.title}</h3>
+          <p style={{ fontSize: 12, marginTop: -15 }}>{news && news.added}</p>
           <p style={{ fontSize: 12, marginTop: -15 }}>
-            {news[id - 1].category}
+            {news && news.category}
           </p>
-          <p>{news[id - 1].text}</p>
+          <p>{news && news.text}</p>
           <p style={{ alignSelf: "flex-end", marginTop: 20 }}>{`Autor: ${
-            news[id - 1].author
+            news && news.author
           }`}</p>
           <button className="news-article-button" onClick={handleNavigate}>
             wróć

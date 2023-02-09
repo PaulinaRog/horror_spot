@@ -13,6 +13,10 @@ export default function TvSeriesPage() {
   const { pathname } = useLocation();
   const { id } = useParams();
 
+  const [category, setCategory] = useState(null);
+
+  console.log(category);
+
   return (
     <>
       <div
@@ -20,13 +24,13 @@ export default function TvSeriesPage() {
         style={{ backgroundImage: `url(${ahs})` }}
       ></div>
       <div className="bg-black" style={{ backgroundImage: `url(${bg5})` }}>
-        <Series />
+        <Series category={category} />
         {pathname === "/tvseries" ? (
           <>
             <h1 className="horror-title header-title-series" title="seriale">
               seriale
             </h1>
-            <MovieCategories />
+            <MovieCategories setCategory={setCategory} />
           </>
         ) : null}
         {pathname.includes(`/tvseries/${id}`) ? (

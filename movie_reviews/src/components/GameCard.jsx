@@ -2,16 +2,36 @@ import React, { useRef } from "react";
 import { useParams } from "react-router-dom";
 import movies from "../utils/MoviesList";
 import { useState } from "react";
+import { useEffect } from "react";
+import supabase from "../services/SupabaseClient";
 
-export default function GameCard() {
-  const { id } = useParams();
-
+export default function GameCard({ id }) {
   const [front, setFront] = useState(null);
   const [details, setDetails] = useState({ transform: "rotateY(180deg)" });
   const [trailer, setTrailer] = useState({ transform: "rotateY(180deg)" });
   const [display, setDisplay] = useState({ display: "none" });
+  const [game, setGame] = useState(null);
 
   const scrollRef = useRef();
+
+  useEffect(() => {
+    const getGame = async () => {
+      const { data, error } = await supabase
+        .from("games")
+        .select(
+          "title, description, category, platform, producer, publisher, polishVersion, year, trailer, reviewAuthor"
+        )
+        .eq("id", id)
+        .single();
+      if (error) {
+        console.log(error);
+      }
+      if (data) {
+        setGame(data);
+      }
+    };
+    getGame();
+  }, []);
 
   const handleDetails = () => {
     setFront({ transform: "rotateY(180deg)" });
@@ -45,16 +65,30 @@ export default function GameCard() {
     scrollRef.current.scrollTop = scrollRef.current.scrollTop - 300;
   };
 
+  function createMarkup() {
+    return { __html: game && game.trailer };
+  }
+
   return (
     <>
-      <h2 className="games-title">{movies[id].title}</h2>
+      <h2 className="games-title">{game && game.title}</h2>
       <div className="games-card">
         <div
           className="games-review games-card-front games-card-side"
           ref={scrollRef}
           style={front && front}
         >
-          <p className="games-text">{movies[id].text}</p>
+          <p className="games-text">{game && game.description}</p>
+          <p
+            style={{
+              float: "right",
+              marginTop: 40,
+              marginBottom: 40,
+              marginRight: "1em",
+            }}
+          >
+            {game && game.reviewAuthor}
+          </p>
         </div>
         <div
           className="games-card-back games-card-side"
@@ -69,15 +103,17 @@ export default function GameCard() {
             className="games-details"
           >
             <h3>Kategoria:</h3>
-            <p>lorem ipsum</p>
-            <h3>Reżyser:</h3>
-            <p>Lorem, ipsum.</p>
-            <h3>Scenariusz:</h3>
-            <p>Lorem, ipsum dolor.</p>
-            <h3>Data premiery:</h3>
-            <p>Lorem ipsum dolor sit amet.</p>
-            <h3>Kraj produkcji:</h3>
-            <p>Lorem ipsum dolor sit amet consectetur.</p>
+            <p>{game && game.category}</p>
+            <h3>Platforma:</h3>
+            <p>{game && game.platform}</p>
+            <h3>Producent:</h3>
+            <p>{game && game.producer}</p>
+            <h3>Wydawca:</h3>
+            <p>{game && game.publisher}</p>
+            <h3>Rok wydania:</h3>
+            <p>{game && game.year}</p>
+            <h3>Wersja polska:</h3>
+            <p>{game && game.polishVersion}</p>
           </div>
         </div>
         <div
@@ -85,16 +121,7 @@ export default function GameCard() {
           style={trailer && trailer}
         >
           <div style={display} className="series-vid">
-            <figure>
-              <iframe
-                width="560"
-                height="315"
-                src="https://www.youtube.com/embed/rgrWXTz_8eU"
-                title="YouTube video player"
-                allow="accelerometer; web-share"
-                allowFullScreen={true}
-              ></iframe>
-            </figure>
+            <figure dangerouslySetInnerHTML={createMarkup()}></figure>
           </div>
         </div>
       </div>

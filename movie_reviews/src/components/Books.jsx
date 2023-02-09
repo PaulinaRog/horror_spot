@@ -1,11 +1,28 @@
 import React, { useEffect, useRef, useState } from "react";
 import books from "../utils/BooksList";
 import { useLocation, useNavigate } from "react-router-dom";
+import supabase from "../services/SupabaseClient";
 
 export default function () {
   const { pathname } = useLocation();
-
   const scrollRef = useRef();
+  const [books, setBooks] = useState(null);
+
+  useEffect(() => {
+    const getBooks = async () => {
+      const { data, error } = await supabase
+        .from("books")
+        .select("id, author, title, src");
+      if (error) {
+        console.log(error);
+      }
+      if (data) {
+        console.log(data);
+        setBooks(data);
+      }
+    };
+    getBooks();
+  }, []);
 
   const handleScrollRight = () => {
     scrollRef.current.scrollLeft = scrollRef.current.scrollLeft + 500;
@@ -29,17 +46,18 @@ export default function () {
         ref={scrollRef}
         style={pathname === "/books" ? { width: "65%" } : null}
       >
-        {books.map((book) => {
-          return (
-            <SingleBook
-              src={book.src}
-              id={book.id}
-              title={book.title}
-              author={book.author}
-              key={book.id}
-            />
-          );
-        })}
+        {books &&
+          books.map((book) => {
+            return (
+              <SingleBook
+                src={book.src}
+                id={book.id}
+                title={book.title}
+                author={book.author}
+                key={book.id}
+              />
+            );
+          })}
       </div>
       <button className="books-btn" onClick={handleScrollRight}>
         {" "}

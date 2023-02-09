@@ -25,7 +25,6 @@ export default function BooksPage() {
         className="bg-black"
         style={{ backgroundImage: `url(${bg20})` }}
       ></div>
-      <Nav />
       {pathname.includes(id) ? <Book /> : null}
       {pathname === "/books" ? (
         <>
@@ -35,6 +34,7 @@ export default function BooksPage() {
         </>
       ) : null}
       <Books />
+      <Nav />
     </>
   );
 }

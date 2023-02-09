@@ -1,13 +1,35 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { useRef } from "react";
+import supabase from "../services/SupabaseClient";
 
-export default function MovieCard({ description }) {
+export default function MovieCard({ description, id }) {
   const [front, setFront] = useState(null);
   const [details, setDetails] = useState({ transform: "rotateY(180deg)" });
   const [trailer, setTrailer] = useState({ transform: "rotateY(180deg)" });
   const [display, setDisplay] = useState({ display: "none" });
+  const [movies, setMovies] = useState(null);
 
   const scrollRef = useRef();
+
+  useEffect(() => {
+    const getMovie = async () => {
+      const { data, error } = await supabase
+        .from("movies")
+        .select(
+          "id, category, director, scenario, productionYear, productionCountry, trailer, reviewAuthor"
+        )
+        .eq("id", id)
+        .single();
+      if (error) {
+        console.log(error);
+      }
+      if (data) {
+        setMovies(data);
+      }
+    };
+    getMovie();
+  }, []);
 
   const handleDetails = () => {
     setFront({ transform: "rotateY(180deg)" });
@@ -38,6 +60,10 @@ export default function MovieCard({ description }) {
     scrollRef.current.scrollTop = scrollRef.current.scrollTop - 300;
   };
 
+  function createMarkup() {
+    return { __html: movies && movies.trailer };
+  }
+
   return (
     <>
       <div className="card">
@@ -47,31 +73,30 @@ export default function MovieCard({ description }) {
           ref={scrollRef}
         >
           <p>{description}</p>
+          <p style={{ marginTop: 40, float: "right" }}>
+            {movies && movies.reviewAuthor}
+          </p>
         </main>
         <div className="card-back card-side" style={details && details}>
           <h3>Kategoria:</h3>
-          <p>lorem ipsum</p>
+          <p>
+            {movies &&
+              (movies.category === "foundFootage"
+                ? "found footage"
+                : movies.category)}
+          </p>
           <h3>Reżyser:</h3>
-          <p>Lorem, ipsum.</p>
+          <p>{movies && movies.director}</p>
           <h3>Scenariusz:</h3>
-          <p>Lorem, ipsum dolor.</p>
+          <p>{movies && movies.scenario}</p>
           <h3>Data premiery:</h3>
-          <p>Lorem ipsum dolor sit amet.</p>
+          <p>{movies && movies.productionYear}</p>
           <h3>Kraj produkcji:</h3>
-          <p>Lorem ipsum dolor sit amet consectetur.</p>
+          <p>{movies && movies.productionCountry}</p>
         </div>
         <div className="card-back card-side" style={trailer && trailer}>
           <div style={display} className="series-vid">
-            <figure>
-              <iframe
-                width="560"
-                height="315"
-                src="https://www.youtube.com/embed/rgrWXTz_8eU"
-                title="YouTube video player"
-                allow="accelerometer; web-share"
-                allowFullScreen={true}
-              ></iframe>
-            </figure>
+            <figure dangerouslySetInnerHTML={createMarkup()}></figure>
           </div>
         </div>
         <button className="movies-details-btn" onClick={handleDetails}>

@@ -7,32 +7,135 @@
   background-repeat: no-repeat;
   background-size: cover;
 
-  &-info {
-    padding: 1em;
+  &-container {
     width: 60vw;
+    height: 90vh;
     position: absolute;
-    top: 15%;
-    left: 15%;
-    height: 30vh;
-    overflow-y: scroll;
-  }
-
-  &-cards {
-    width: 70vw;
-    height: 30vh;
-    position: absolute;
-    bottom: 7%;
-    left: 15%;
+    top: 5vh;
+    left: 10vw;
     display: flex;
-    gap: 30px;
-    overflow-x: scroll;
+    transition: all 1s ease;
   }
 
-  &-card {
-    height: 28vh;
-    width: 20vh;
+  &-photos {
+    height: 70vh;
+    width: 9vw;
+    object-fit: cover;
+    border: 2px solid $red;
+    transition: all 1s ease;
+    position: absolute;
+    filter: brightness(50%) blur(1px);
+    cursor: url(../../src/assets/knife-mid.png), pointer;
+
+    &:hover {
+      width: 17vw;
+      filter: none;
+    }
+
+    &-1 {
+      margin-top: 60px;
+      left: 3vw;
+      &:hover {
+        left: 0;
+      }
+    }
+    &-2 {
+      margin-top: 80px;
+      left: 20vw;
+      &:hover {
+        left: 17vw;
+      }
+    }
+    &-3 {
+      margin-top: 10px;
+      left: 37vw;
+      &:hover {
+        left: 34vw;
+      }
+    }
+    &-4 {
+      margin-top: 60px;
+      left: 54vw;
+      &:hover {
+        left: 51vw;
+      }
+    }
+  }
+
+  &-name {
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    text-transform: uppercase;
+    position: absolute;
+    font-size: 25px;
+    font-weight: 300;
+    z-index: 5;
+    text-shadow: 1px 1px 2px black;
+    color: $white-inactive;
+    transition: all 1s ease;
+
+    &-1 {
+      margin-top: 80px;
+      left: 1vw;
+    }
+    &-2 {
+      margin-top: 100px;
+      left: 30%;
+    }
+    &-3 {
+      margin-top: 30px;
+      left: 35vw;
+    }
+    &-4 {
+      margin-top: 80px;
+      left: 52vw;
+    }
+  }
+
+  &-info {
+    width: 80%;
+    height: 90%;
+    position: absolute;
+    top: 5%;
+    left: 32%;
     background: linear-gradient(135deg, black, rgb(51, 51, 51));
     border: 2px solid $red;
+    overflow-y: scroll;
     border-radius: 1.5em;
+    animation: info 0.5s linear;
+
+    &-back {
+      position: absolute;
+      bottom: 3%;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 0.5em 1em;
+      @include button2;
+    }
+  }
+
+  &-text {
+    width: 90%;
+    height: 60%;
+    margin-left: 5%;
+    margin-top: 5%;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    animation: appear 2s ease;
+  }
+
+  &-scroll {
+    position: absolute;
+    top: 50%;
+    left: 70vw;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    transform: translateY(-50%);
+
+    &-button {
+      padding: 0 0.5em;
+      @include button2;
+    }
   }
 }

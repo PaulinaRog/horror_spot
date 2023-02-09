@@ -4,6 +4,7 @@ body {
   font-size: 16px;
   color: $white-fonts;
   background-color: black;
+  caret-color: transparent;
 
   &::-moz-scrollbar {
     display: none;
@@ -92,4 +93,9 @@ iframe {
   body {
     scrollbar-width: none;
   }
+}
+
+input,
+textarea {
+  caret-color: $red;
 }

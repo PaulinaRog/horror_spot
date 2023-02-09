@@ -1,12 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
+import { useEffect } from "react";
 import { useRef } from "react";
 import { useParams } from "react-router-dom";
+import supabase from "../services/SupabaseClient";
 import books from "../utils/BooksList";
 
 export default function Book() {
   const { id } = useParams();
-
   const scrollRef = useRef();
+  const [books, setBooks] = useState(null);
+
+  useEffect(() => {
+    const getBooks = async () => {
+      const { data, error } = await supabase
+        .from("books")
+        .select(
+          "id, title, author, publisher, description, year, series, reviewAuthor"
+        )
+        .eq("id", id)
+        .single();
+      if (error) {
+        console.log(error);
+      }
+      if (data) {
+        setBooks(data);
+      }
+    };
+    getBooks();
+  }, []);
 
   const handleScrollDown = () => {
     scrollRef.current.scrollTop = scrollRef.current.scrollTop + 300;
@@ -19,19 +40,29 @@ export default function Book() {
   return (
     <>
       <div className="books-main-info">
-        <h2>{books[id - 1].title}</h2>
-        <h1>{books[id - 1].author}</h1>
+        <h2>{books && books.title}</h2>
+        <h1>{books && books.author}</h1>
       </div>
       <div className="books-content" ref={scrollRef}>
-        <p>{books[id - 1].text}</p>
+        <p>{books && books.description}</p>
+        <p
+          style={{
+            float: "right",
+            marginTop: 40,
+            marginBottom: 40,
+            marginRight: "1em",
+          }}
+        >
+          {books && books.reviewAuthor}
+        </p>
       </div>
       <div className="books-details">
         <h3>Wydawnictwo:</h3>
-        <p>lorem ipsum</p>
+        <p>{books && books.publisher}</p>
         <h3>Rok wydania:</h3>
-        <p>lorem</p>
+        <p>{books && books.year}</p>
         <h3>Cykl:</h3>
-        <p>Lorem ipsum dolor sit amet.</p>
+        <p>{books && books.series}</p>
       </div>
       <div className="books-scroll-buttons">
         {" "}

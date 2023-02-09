@@ -1,66 +1,172 @@
 import React from "react";
 import Nav from "../components/Nav";
+import puni from "../assets/puni.jpg";
+import sadako from "../assets/sadako.png";
+import saw from "../assets/saw.jpg";
+import terrifier from "../assets/terrifier.jpg";
+import { useState } from "react";
+import people from "../utils/People";
+import { useRef } from "react";
 
 export default function AboutUs() {
+  const [style1, setStyle1] = useState(null);
+  const [style2, setStyle2] = useState(null);
+  const [style3, setStyle3] = useState(null);
+  const [style4, setStyle4] = useState(null);
+  const [p, setP] = useState(null);
+  const [info, setInfo] = useState({ display: "none" });
+  const [id, setId] = useState(null);
+
+  const scrollRef = useRef();
+
+  const handleReset = () => {
+    setStyle1(null);
+    setStyle2(null);
+    setStyle3(null);
+    setStyle4(null);
+    setP(null);
+    setInfo({ display: "none" });
+    setId(null);
+  };
+
+  const handleClick1 = (e) => {
+    setStyle1({ width: "17vw", left: 0, filter: "none" });
+    setStyle2({ display: "none" });
+    setStyle3({ display: "none" });
+    setStyle4({ display: "none" });
+    setP({ display: "none" });
+    setInfo(null);
+    setId(e.target.id);
+  };
+
+  const handleClick2 = (e) => {
+    setStyle1({ display: "none" });
+    setStyle2({
+      animation: "moveleft2 1s ease",
+      width: "17vw",
+      left: 0,
+      filter: "none",
+    });
+    setStyle3({ display: "none" });
+    setStyle4({ display: "none" });
+    setP({ display: "none" });
+    setId(e.target.id);
+    setTimeout(() => {
+      setInfo(null);
+    }, 1000);
+  };
+
+  const handleClick3 = (e) => {
+    setStyle1({ display: "none" });
+    setStyle2({ display: "none" });
+    setStyle3({
+      animation: "moveleft3 1s ease",
+      width: "17vw",
+      left: 0,
+      filter: "none",
+    });
+    setStyle4({ display: "none" });
+    setP({ display: "none" });
+    setId(e.target.id);
+    setTimeout(() => {
+      setInfo(null);
+    }, 1000);
+  };
+
+  const handleClick4 = (e) => {
+    setStyle1({ display: "none" });
+    setStyle2({ display: "none" });
+    setStyle3({ display: "none" });
+    setStyle4({
+      animation: "moveleft4 1s ease",
+      width: "17vw",
+      left: 0,
+      filter: "none",
+    });
+    setP({ display: "none" });
+    setId(e.target.id);
+    setTimeout(() => {
+      setInfo(null);
+    }, 1000);
+  };
+
+  const handleScrollUp = () => {
+    scrollRef.current.scrollTop = scrollRef.current.scrollTop - 300;
+  };
+
+  const handleScrollDown = () => {
+    scrollRef.current.scrollTop = scrollRef.current.scrollTop + 300;
+  };
+
   return (
     <>
       <div className="aboutus">
-        <Nav />
-        <h2
-          style={{
-            position: "absolute",
-            top: "10%",
-            left: "15%",
-            paddingLeft: "1em",
-          }}
-        >
-          Redakcja
-        </h2>
-        <div className="aboutus-info">
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae
-            deserunt, enim veritatis expedita exercitationem veniam repellendus
-            ratione fuga, accusantium omnis perferendis cum praesentium quasi ut
-            sunt similique! Qui consequatur quisquam excepturi omnis non
-            voluptas, amet sequi mollitia saepe! Velit eveniet impedit nam
-            alias. Velit necessitatibus sapiente debitis veniam, alias aut.
-            Culpa dolorem quidem sapiente, natus suscipit laudantium eius ut
-            placeat dolore, et vitae dolorum numquam tempora dicta maiores optio
-            ducimus, veniam eum inventore quaerat. Neque molestiae dolores
-            accusamus aliquid odio, nemo reprehenderit laboriosam aspernatur aut
-            quaerat sed labore culpa recusandae veritatis ea cumque eligendi
-            voluptatum numquam dolor iste excepturi rem ipsa. Labore excepturi
-            nobis, sed doloremque soluta voluptatum. Veniam earum pariatur
-            sapiente tempora corporis, quaerat mollitia rerum distinctio? Quod
-            possimus ea dignissimos tempora, maiores deleniti, beatae sit
-            perferendis velit placeat quidem itaque quaerat laudantium, ut
-            inventore! Placeat iure quia debitis hic sit provident similique
-            quos magnam maiores nobis odit dolorum voluptatum excepturi fugit
-            deleniti reprehenderit fuga, dolor saepe deserunt. Voluptatum,
-            nulla. Eius ullam reprehenderit velit, earum voluptatum, quod
-            praesentium ut voluptates obcaecati rerum ad vitae dolore cumque
-            facilis consequuntur. Omnis tempora ipsum, non, atque commodi nulla
-            rerum repellat facilis reiciendis optio adipisci iusto. A, quis
-            quisquam non sint quidem perspiciatis ea omnis assumenda architecto
-            error ullam, amet eos nam aspernatur dolore aut asperiores
-            perferendis. Sint a adipisci, natus libero fugiat corrupti numquam
-            minima non laudantium fuga, dolor dicta, veritatis commodi? Dicta
-            non perferendis inventore vitae ducimus, tenetur aliquid tempora
-            esse totam a ullam consectetur cum ea dolorum explicabo. Beatae,
-            quos harum. Possimus numquam officia doloremque quam enim velit!
-            Porro placeat, impedit id incidunt aut aliquam ad eaque ducimus
-            quaerat, assumenda amet reprehenderit? Expedita, voluptatum
-            consectetur? Asperiores, consectetur? Deserunt sunt praesentium
-            dolore incidunt unde est, voluptatum alias rem vero deleniti dolores
-            amet nostrum vitae perferendis consequuntur nisi earum provident cum
-            laborum!
+        <div className="aboutus-container">
+          <img
+            className="aboutus-photos aboutus-photos-1"
+            src={sadako}
+            style={style1 && style1}
+            onClick={handleClick1}
+            id={1}
+          />
+          <p style={p} className="aboutus-name aboutus-name-1">
+            vicek
           </p>
+          <img
+            className="aboutus-photos aboutus-photos-2"
+            src={puni}
+            style={style2 && style2}
+            onClick={handleClick2}
+            id={2}
+          />
+          <p style={p} className="aboutus-name aboutus-name-2">
+            puszek
+          </p>
+          <img
+            className="aboutus-photos aboutus-photos-3"
+            src={saw}
+            style={style3 && style3}
+            onClick={handleClick3}
+            id={3}
+          />
+          <p style={p} className="aboutus-name aboutus-name-3">
+            ktośtam
+          </p>
+          <img
+            className="aboutus-photos aboutus-photos-4"
+            src={terrifier}
+            style={style4 && style4}
+            onClick={handleClick4}
+            id={4}
+          />
+          <p style={p} className="aboutus-name aboutus-name-4">
+            ktośinny
+          </p>
+          <div className="aboutus-info" style={info}>
+            <h2 style={{ margin: "5% 0 0 5%", animation: "appear 2s ease" }}>
+              {id && people[id - 1].name}
+            </h2>
+            <div className="aboutus-text" ref={scrollRef}>
+              <p>{id && people[id - 1].text}</p>
+            </div>
+            <button className="aboutus-info-back" onClick={handleReset}>
+              powrót
+            </button>
+          </div>
+          <div className="aboutus-scroll" style={info}>
+            <button className="aboutus-scroll-button" onClick={handleScrollUp}>
+              <i className="fa-solid fa-angle-up"></i>
+            </button>
+            <button
+              className="aboutus-scroll-button"
+              onClick={handleScrollDown}
+            >
+              <i className="fa-solid fa-angle-down"></i>
+            </button>
+          </div>
         </div>
-        <div className="aboutus-cards">
-          <div className="aboutus-card"></div>
-          <div className="aboutus-card"></div>
-          <div className="aboutus-card"></div>
-        </div>
+
+        <Nav />
       </div>
     </>
   );

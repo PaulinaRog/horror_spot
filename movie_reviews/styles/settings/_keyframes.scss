@@ -92,3 +92,42 @@
     transform: rotateY(0deg);
   }
 }
+
+@keyframes info {
+  from {
+    width: 0;
+  }
+  to {
+    width: 80%;
+  }
+}
+
+@keyframes moveleft2 {
+  from {
+    left: 17vw;
+  }
+
+  to {
+    left: 0;
+  }
+}
+
+@keyframes moveleft3 {
+  from {
+    left: 34vw;
+  }
+
+  to {
+    left: 0;
+  }
+}
+
+@keyframes moveleft4 {
+  from {
+    left: 51vw;
+  }
+
+  to {
+    left: 0;
+  }
+}

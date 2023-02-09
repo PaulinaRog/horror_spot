@@ -8,6 +8,7 @@ import movies from "../utils/MoviesList";
 import { useEffect } from "react";
 import MovieCard from "../components/MovieCard";
 import MovieCategories from "../components/MovieCategories";
+import supabase from "../services/SupabaseClient";
 
 export default function Index() {
   const { id } = useParams();
@@ -15,11 +16,32 @@ export default function Index() {
   const [width, setWidth] = useState(null);
   const [animation, setAnimation] = useState(null);
   const [copyrights, setCopyrights] = useState({ display: "none" });
+  const [movies, setMovies] = useState(null);
+  const [category, setCategory] = useState(null);
+
+  console.log(category);
 
   useEffect(() => {
     setAnimation("width 2s ease");
     setWidth("120vw");
-  }, []);
+
+    if (pathname.includes(`/movies/${id}`)) {
+      const getMovie = async () => {
+        const { data, error } = await supabase
+          .from("movies")
+          .select("id, src, title, description, copyright")
+          .eq("id", id)
+          .single();
+        if (error) {
+          console.log(error);
+        }
+        if (data) {
+          setMovies(data);
+        }
+      };
+      getMovie();
+    }
+  }, [id]);
 
   const handleShowCopyrights = () => {
     setCopyrights({ display: "block" });
@@ -37,8 +59,8 @@ export default function Index() {
           backgroundColor: "black",
         }}
       >
+        <Movies category={category} />
         <Nav />
-        <Movies />
         {pathname === "/movies" ? (
           <>
             <h1 className="horror-title header-title" title="filmy">
@@ -52,7 +74,7 @@ export default function Index() {
                 width: width && width,
               }}
             ></div>
-            <MovieCategories />
+            <MovieCategories setCategory={setCategory} />
           </>
         ) : null}
         <div className="index-gradient"></div>
@@ -70,19 +92,19 @@ export default function Index() {
                 textAlign: "center",
               }}
             >
-              {movies[id].title}
+              {movies && movies.title}
             </h2>
             <div
               className="index"
               style={{
-                backgroundImage: `url(${movies[id].src})`,
+                backgroundImage: `url(${movies && movies.src})`,
                 right: 0,
                 filter: "brightness(70%)",
               }}
             ></div>
-            <MovieCard description={movies[id].text} />
+            <MovieCard description={movies && movies.description} id={id} />
             <p style={copyrights} className="movies-copyrights">
-              Warner Bros Studios
+              {movies && movies.copyright}
             </p>
             <p
               onMouseEnter={handleShowCopyrights}

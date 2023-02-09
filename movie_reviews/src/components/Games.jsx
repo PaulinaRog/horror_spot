@@ -1,11 +1,46 @@
 import React from "react";
 import { useState } from "react";
+import { useEffect } from "react";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import movies from "../utils/MoviesList";
+import supabase from "../services/SupabaseClient";
 
-export default function Games() {
+export default function Games({ category }) {
   const scrollRef = useRef();
+
+  const [games, setGames] = useState(null);
+
+  useEffect(() => {
+    if (category) {
+      const getGames = async () => {
+        const { data, error } = await supabase
+          .from("games")
+          .select("id, src, title")
+          .eq("category", category);
+        if (error) {
+          console.log(error);
+        }
+        if (data) {
+          setGames(data);
+        }
+      };
+      getGames();
+    } else {
+      const getGames = async () => {
+        const { data, error } = await supabase
+          .from("games")
+          .select("id, src, title");
+        if (error) {
+          console.log(error);
+        }
+        if (data) {
+          setGames(data);
+        }
+      };
+      getGames();
+    }
+  }, [category]);
 
   const handleScrollLeft = () => {
     scrollRef.current.scrollLeft = scrollRef.current.scrollLeft - 700;
@@ -21,16 +56,17 @@ export default function Games() {
         <i className="fa-solid fa-angle-left"></i>
       </button>
       <div className="games" ref={scrollRef}>
-        {movies.map((movie) => {
-          return (
-            <SingleGame
-              key={movie.id}
-              id={movie.id}
-              src={movie.src}
-              title={movie.title}
-            />
-          );
-        })}
+        {games &&
+          games.map((game) => {
+            return (
+              <SingleGame
+                key={game.id}
+                id={game.id}
+                src={game.src}
+                title={game.title}
+              />
+            );
+          })}
       </div>
       <button
         className="games-scroll"

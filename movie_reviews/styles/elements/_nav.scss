@@ -2,7 +2,8 @@
   width: 5vw;
   height: 100vh;
   // background-image: url(../src/assets/navbg.png);
-  backdrop-filter: brightness(50%) blur(5px);
+  backdrop-filter: blur(7px);
+  background-color: rgba(0, 0, 0, 0.445);
   z-index: 5;
   position: absolute;
   display: flex;
@@ -18,5 +19,36 @@
     width: 5vw;
     height: 5vw;
     @include button(0);
+  }
+}
+
+.navbtn {
+  &:hover {
+    &::after {
+      content: attr(data-title);
+      width: 100px;
+      background-color: $red;
+      position: absolute;
+      border-radius: 10px;
+      font-size: 16px;
+      left: 5.3vw;
+      padding: 0.5em;
+      top: 2.5vh;
+      border: 2px solid $red;
+      animation: appear 1s ease;
+      color: white;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      right: -5px;
+      top: 5vh;
+      margin-top: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: transparent $red transparent transparent;
+      animation: appear 1s ease;
+    }
   }
 }

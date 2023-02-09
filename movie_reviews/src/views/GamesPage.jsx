@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Nav from "../components/Nav";
 import mortuary from "../assets/mortuaryAssistant.png";
 import bg10 from "../assets/bg10.png";
@@ -9,6 +9,12 @@ import GameCard from "../components/GameCard";
 export default function GamesPage() {
   const { pathname } = useLocation();
   const { id } = useParams();
+
+  const [category, setCategory] = useState(null);
+
+  const handleClick = (e) => {
+    setCategory(e.target.value);
+  };
 
   return (
     <>
@@ -23,21 +29,43 @@ export default function GamesPage() {
         className="bg-black"
         style={{ backgroundImage: `url(${bg10})` }}
       ></div>
-      <Nav />
+
       {pathname === "/games" ? (
         <>
           <h1 className="horror-title header-title-games" title="gry">
             gry
           </h1>
           <div className="games-buttons">
-            <button className="games-button">Survival</button>
-            <button className="games-button">Przygodowe</button>
-            <button className="games-button">Akcja</button>
+            <button
+              className="games-button"
+              value="survival"
+              onClick={handleClick}
+            >
+              survival
+            </button>
+            <button
+              className="games-button"
+              value="przygodowe"
+              onClick={handleClick}
+            >
+              przygodowe
+            </button>
+            <button
+              className="games-button"
+              value="akcja"
+              onClick={handleClick}
+            >
+              akcja
+            </button>
+            <button className="games-button" value={null} onClick={handleClick}>
+              wszystkie
+            </button>
           </div>
         </>
       ) : null}
-      <Games />
-      {pathname.includes(`/games/${id}`) ? <GameCard /> : null}
+      <Games category={category} />
+      {pathname.includes(`/games/${id}`) ? <GameCard id={id} /> : null}
+      <Nav />
     </>
   );
 }

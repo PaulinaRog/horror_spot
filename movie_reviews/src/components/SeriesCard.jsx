@@ -1,6 +1,8 @@
 import React from "react";
 import movies from "../utils/MoviesList";
 import { useState, useRef } from "react";
+import { useEffect } from "react";
+import supabase from "../services/SupabaseClient";
 
 export default function SeriesCard({ id }) {
   const [front, setFront] = useState(null);
@@ -9,6 +11,28 @@ export default function SeriesCard({ id }) {
   const [display, setDisplay] = useState({ display: "none" });
 
   const scrollRef = useRef();
+
+  const [series, setSeries] = useState(null);
+
+  useEffect(() => {
+    const getSeries = async () => {
+      const { data, error } = await supabase
+        .from("tvseries")
+        .select(
+          "id, src, title, description, copyright, category, productionYear, productionCountry, trailer, reviewAuthor, creators, seasons"
+        )
+        .eq("id", id)
+        .single();
+      if (error) {
+        console.log(error);
+      }
+      if (data) {
+        console.log(data);
+        setSeries(data);
+      }
+    };
+    getSeries();
+  }, []);
 
   const handleDetails = () => {
     setFront({ transform: "rotateY(180deg)" });
@@ -42,10 +66,14 @@ export default function SeriesCard({ id }) {
     scrollRef.current.scrollTop = scrollRef.current.scrollTop - 300;
   };
 
+  function createMarkup() {
+    return { __html: series && series.trailer };
+  }
+
   return (
     <>
       <div className="series-menu-container">
-        <h2 className="series-title">{movies[id].title}</h2>
+        <h2 className="series-title">{series && series.title}</h2>
         <div className="series-menu-container-buttons">
           <button
             className="series-menu-container-button"
@@ -73,7 +101,10 @@ export default function SeriesCard({ id }) {
           ref={scrollRef}
           style={front && front}
         >
-          <p className="series-text">{movies[id].text}</p>
+          <p className="series-text">{series && series.description}</p>
+          <p style={{ float: "right", marginBottom: 40, marginRight: "1em" }}>
+            {series && series.reviewAuthor}
+          </p>
         </div>
         <div
           className="series-card-back series-card-side"
@@ -84,19 +115,20 @@ export default function SeriesCard({ id }) {
               position: "relative",
               top: "7%",
               left: "5%",
+              width: "90%",
             }}
             className="series-details"
           >
             <h3>Kategoria:</h3>
-            <p>lorem ipsum</p>
-            <h3>Reżyser:</h3>
-            <p>Lorem, ipsum.</p>
-            <h3>Scenariusz:</h3>
-            <p>Lorem, ipsum dolor.</p>
+            <p>{series && series.category}</p>
+            <h3>Twórcy:</h3>
+            <p>{series && series.creators}</p>
             <h3>Data premiery:</h3>
-            <p>Lorem ipsum dolor sit amet.</p>
+            <p>{series && series.productionYear}</p>
             <h3>Kraj produkcji:</h3>
-            <p>Lorem ipsum dolor sit amet consectetur.</p>
+            <p>{series && series.productionCountry}</p>
+            <h3>Sezony:</h3>
+            <p>{series && series.seasons}</p>
           </div>
         </div>
         <div
@@ -104,16 +136,7 @@ export default function SeriesCard({ id }) {
           style={trailer && trailer}
         >
           <div style={display} className="series-vid">
-            <figure>
-              <iframe
-                width="560"
-                height="315"
-                src="https://www.youtube.com/embed/rgrWXTz_8eU"
-                title="YouTube video player"
-                allow="accelerometer; web-share"
-                allowFullScreen={true}
-              ></iframe>
-            </figure>
+            <figure dangerouslySetInnerHTML={createMarkup()}></figure>
           </div>
         </div>
       </div>

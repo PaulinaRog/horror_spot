@@ -10,6 +10,7 @@ import BooksPage from "./src/views/BooksPage";
 import News from "./src/views/News";
 import AboutUs from "./src/views/AboutUs";
 import Contact from "./src/views/Contact";
+import Settings from "./src/views/Settings";
 
 export default function App() {
   return (
@@ -34,6 +35,7 @@ export default function App() {
           </Route>
           <Route path="aboutus" element={<AboutUs />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="settings" element={<Settings />} />
         </Routes>
       </BrowserRouter>
     </>

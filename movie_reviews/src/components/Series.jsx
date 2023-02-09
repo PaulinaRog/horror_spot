@@ -3,13 +3,50 @@ import movies from "../utils/MoviesList";
 import { useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
+import { useEffect } from "react";
+import supabase from "../services/SupabaseClient";
 
-export default function Series() {
+export default function Series({ category }) {
   const scrollbox = useRef();
   const scrollCircle = useRef();
   const content = useRef();
 
   const navigate = useNavigate();
+
+  const [movies, setMovies] = useState(null);
+
+  useEffect(() => {
+    if (category) {
+      const getSeries = async () => {
+        const { data, error } = await supabase
+          .from("tvseries")
+          .select("id, src, title")
+          .eq("category", category);
+        if (error) {
+          console.log(error);
+        }
+        if (data) {
+          console.log(data);
+          setMovies(data);
+        }
+      };
+      getSeries();
+    } else {
+      const getSeries = async () => {
+        const { data, error } = await supabase
+          .from("tvseries")
+          .select("id, src, title");
+        if (error) {
+          console.log(error);
+        }
+        if (data) {
+          console.log(data);
+          setMovies(data);
+        }
+      };
+      getSeries();
+    }
+  }, [category]);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -43,27 +80,28 @@ export default function Series() {
         <div id="visible-scrollbox">
           <div id="content" ref={content}>
             <div id="scroll-circle" ref={scrollCircle}></div>
-            {movies.map((movie) => {
-              return (
-                <div
-                  key={movie.id}
-                  className="series-img-container"
-                  style={{
-                    pointerEvents: "all",
-                  }}
-                >
-                  <div className="fucking-title" name={movie.title}>
-                    <img
-                      onClick={handleClick}
-                      src={movie.src}
-                      id={movie.id}
-                      className="series-img"
-                    />
+            {movies &&
+              movies.map((movie) => {
+                return (
+                  <div
+                    key={movie.id}
+                    className="series-img-container"
+                    style={{
+                      pointerEvents: "all",
+                    }}
+                  >
+                    <div className="fucking-title" name={movie.title}>
+                      <img
+                        onClick={handleClick}
+                        src={movie.src}
+                        id={movie.id}
+                        className="series-img"
+                      />
+                    </div>
+                    <br />
                   </div>
-                  <br />
-                </div>
-              );
-            })}
+                );
+              })}
           </div>
         </div>
       </div>

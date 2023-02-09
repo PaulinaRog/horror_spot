@@ -2,8 +2,42 @@ import React, { useEffect, useState } from "react";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import movies from "../utils/MoviesList";
+import supabase from "../services/SupabaseClient";
 
-export default function Movies({}) {
+export default function Movies({ category }) {
+  const [movies, setMovies] = useState(null);
+
+  useEffect(() => {
+    if (category) {
+      const getMovies = async () => {
+        const { data, error } = await supabase
+          .from("movies")
+          .select("id, src, title")
+          .eq("category", category);
+        if (error) {
+          console.log(error);
+        }
+        if (data) {
+          setMovies(data);
+        }
+      };
+      getMovies();
+    } else {
+      const getMovies = async () => {
+        const { data, error } = await supabase
+          .from("movies")
+          .select("id, src, title");
+        if (error) {
+          console.log(error);
+        }
+        if (data) {
+          setMovies(data);
+        }
+      };
+      getMovies();
+    }
+  }, [category]);
+
   const scrollRef = useRef();
 
   const handleScrollDown = (e) => {
@@ -19,11 +53,17 @@ export default function Movies({}) {
   return (
     <>
       <div className="movies" ref={scrollRef}>
-        {movies.map((movie) => {
-          return (
-            <SingleMovie id={movie.id} src={movie.src} title={movie.title} />
-          );
-        })}
+        {movies &&
+          movies.map((movie) => {
+            return (
+              <SingleMovie
+                key={movie.id}
+                id={movie.id}
+                src={movie.src}
+                title={movie.title}
+              />
+            );
+          })}
       </div>
       <div className="movies-btn-top">
         <button className="movies-nav" onClick={handleScrollUp}>

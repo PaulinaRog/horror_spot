@@ -91,21 +91,21 @@
 
   &-buttons {
     position: absolute;
+    top: 55%;
     width: 50%;
-    display: flex;
     justify-content: center;
     align-items: center;
+    gap: 2em;
+    display: flex;
     flex-wrap: wrap;
-    top: 50%;
     left: 50%;
+    z-index: 6;
     transform: translate(-50%, -50%);
-    z-index: 5;
-    justify-content: space-between;
   }
 
   &-button {
+    padding: 0.5em 1em;
     width: 200px;
-    padding: 0.5em;
     @include button2;
   }
 

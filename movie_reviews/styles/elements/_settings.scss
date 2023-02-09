@@ -1,0 +1,66 @@
+.settings {
+  display: flex;
+  flex-direction: column;
+  height: 95vh;
+  gap: 40px;
+  padding: 1em;
+  width: 10%;
+  border-right: 2px solid $red;
+  overflow: hidden;
+
+  &-button {
+    @include button2;
+    padding: 0.5em 0;
+    width: 90%;
+  }
+
+  &-details {
+    width: 82vw;
+    height: 90vh;
+    background-color: rgba(240, 248, 255, 0.182);
+    position: absolute;
+    padding: 1em;
+    top: 2%;
+    left: 14%;
+  }
+
+  &-title-list {
+    display: flex;
+    flex-direction: column;
+    width: 15vw;
+    gap: 10px;
+    border-right: 2px solid $red;
+    height: 100%;
+    overflow-y: scroll;
+  }
+
+  &-edit {
+    width: 65vw;
+    height: 91%;
+    padding: 1em;
+    position: absolute;
+    top: 2%;
+    right: 0;
+    overflow-y: scroll;
+
+    &-details {
+      input,
+      select,
+      textarea {
+        padding: 1em;
+        background-color: black;
+        color: $white-inactive;
+        border: none;
+        border-bottom: 2px solid $red;
+        font-family: $font-main;
+      }
+      textarea {
+        height: 10em;
+      }
+      label {
+        margin-top: 30px;
+        margin-bottom: 5px;
+      }
+    }
+  }
+}
