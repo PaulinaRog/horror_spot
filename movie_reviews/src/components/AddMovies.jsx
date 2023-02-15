@@ -169,6 +169,7 @@ export default function AddMovies() {
           <option value="Vicek">Vicek</option>
           <option value="Puszek">Puszek</option>
           <option value="Tomek">Tomek</option>
+          <option value="Przemo">Przemo</option>
         </select>
         {text ? <h3 style={{ marginTop: 40 }}>{text}</h3> : null}
         <button
