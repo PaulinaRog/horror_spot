@@ -70,6 +70,10 @@ export default function SeriesCard({ id }) {
     return { __html: series && series.trailer };
   }
 
+  function createMarkup2() {
+    return { __html: series && series.description };
+  }
+
   return (
     <>
       <div className="series-menu-container">
@@ -101,7 +105,10 @@ export default function SeriesCard({ id }) {
           ref={scrollRef}
           style={front && front}
         >
-          <p className="series-text">{series && series.description}</p>
+          <div
+            dangerouslySetInnerHTML={createMarkup2()}
+            style={{ padding: "1em" }}
+          ></div>
           <p style={{ float: "right", marginBottom: 40, marginRight: "1em" }}>
             {series && series.reviewAuthor}
           </p>
@@ -143,13 +150,13 @@ export default function SeriesCard({ id }) {
       <div
         style={{
           position: "absolute",
-          bottom: "5%",
+          bottom: "7%",
           left: "55%",
           transform: "translateX(-50%)",
           width: 400,
           zIndex: 7,
           display: "flex",
-          gap: 40,
+          gap: 60,
         }}
       >
         <button className="series-scroll-review" onClick={handleScrollUp}>

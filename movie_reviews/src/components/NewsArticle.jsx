@@ -42,6 +42,10 @@ export default function NewsArticle({ setScrollPosition, scrollposition }) {
     scrollRef.current.scrollTop = scrollRef.current.scrollTop + 500;
   };
 
+  function createMarkup() {
+    return { __html: news && news.text };
+  }
+
   return (
     <>
       <div className="news-window" ref={scrollRef}>
@@ -52,7 +56,7 @@ export default function NewsArticle({ setScrollPosition, scrollposition }) {
           <p style={{ fontSize: 12, marginTop: -15 }}>
             {news && news.category}
           </p>
-          <p>{news && news.text}</p>
+          <div dangerouslySetInnerHTML={createMarkup()}></div>
           <p style={{ alignSelf: "flex-end", marginTop: 20 }}>{`Autor: ${
             news && news.author
           }`}</p>

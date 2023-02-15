@@ -37,6 +37,10 @@ export default function Book() {
     scrollRef.current.scrollTop = scrollRef.current.scrollTop - 300;
   };
 
+  function createMarkup2() {
+    return { __html: books && books.description };
+  }
+
   return (
     <>
       <div className="books-main-info">
@@ -44,7 +48,7 @@ export default function Book() {
         <h1>{books && books.author}</h1>
       </div>
       <div className="books-content" ref={scrollRef}>
-        <p>{books && books.description}</p>
+        <div dangerouslySetInnerHTML={createMarkup2()}></div>
         <p
           style={{
             float: "right",

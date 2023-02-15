@@ -69,6 +69,10 @@ export default function GameCard({ id }) {
     return { __html: game && game.trailer };
   }
 
+  function createMarkup2() {
+    return { __html: game && game.description };
+  }
+
   return (
     <>
       <h2 className="games-title">{game && game.title}</h2>
@@ -78,7 +82,10 @@ export default function GameCard({ id }) {
           ref={scrollRef}
           style={front && front}
         >
-          <p className="games-text">{game && game.description}</p>
+          <div
+            dangerouslySetInnerHTML={createMarkup2()}
+            style={{ padding: "1em" }}
+          ></div>
           <p
             style={{
               float: "right",

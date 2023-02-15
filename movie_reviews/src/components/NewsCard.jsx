@@ -9,6 +9,10 @@ export default function NewsCard({ id, title, text, src, added }) {
     navigate(`${e.target.id}`);
   };
 
+  function createMarkup() {
+    return { __html: text && text.substring(0, 200) + "..." };
+  }
+
   return (
     <>
       <div className="news-card">
@@ -16,7 +20,7 @@ export default function NewsCard({ id, title, text, src, added }) {
         <div className="news-card-text">
           <h3 style={{ marginTop: 0 }}>{title}</h3>
           <p style={{ fontSize: 12, marginTop: -15 }}>{added}</p>
-          <p>{text.substring(0, 200) + "..."}</p>
+          <div dangerouslySetInnerHTML={createMarkup()}></div>
           <button className="news-card-button" id={id} onClick={handleNavigate}>
             czytaj
           </button>

@@ -64,6 +64,10 @@ export default function MovieCard({ description, id }) {
     return { __html: movies && movies.trailer };
   }
 
+  function createMarkupMovies() {
+    return { __html: movies && description };
+  }
+
   return (
     <>
       <div className="card">
@@ -72,7 +76,7 @@ export default function MovieCard({ description, id }) {
           style={front && front}
           ref={scrollRef}
         >
-          <p>{description}</p>
+          <div dangerouslySetInnerHTML={createMarkupMovies()}></div>
           <p style={{ marginTop: 40, float: "right" }}>
             {movies && movies.reviewAuthor}
           </p>
@@ -119,11 +123,15 @@ export default function MovieCard({ description, id }) {
         <button
           className="movies-scroll-review"
           onClick={handleScrollDown}
-          style={{ left: "40%" }}
+          style={{ left: "45%" }}
         >
           <i className="fa-solid fa-angle-down"></i>
         </button>
-        <button className="movies-scroll-review" onClick={handleScrollUp}>
+        <button
+          className="movies-scroll-review"
+          style={{ left: "32%" }}
+          onClick={handleScrollUp}
+        >
           <i className="fa-solid fa-angle-up"></i>
         </button>
       </div>
