@@ -44,6 +44,7 @@
     overflow-y: scroll;
 
     &-details {
+      display: grid;
       input,
       select,
       textarea {
@@ -62,5 +63,12 @@
         margin-bottom: 5px;
       }
     }
+  }
+  &-instruction {
+    position: absolute;
+    top: 5vh;
+    left: 17vw;
+    overflow-y: scroll;
+    height: 90vh;
   }
 }

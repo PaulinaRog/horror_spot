@@ -1,178 +1,155 @@
-import React, { useState } from "react";
-import { useRef } from "react";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import SettingsDetails from "../components/SettingsDetails";
+
+import media1 from "../assets/bibliotekaMediow.png";
+import media2 from "../assets/media2.png";
+import media3 from "../assets/media3.png";
+import media4 from "../assets/media4.png";
+
+import yt1 from "../assets/yt1.png";
+import yt2 from "../assets/yt2.png";
 import supabase from "../services/SupabaseClient";
+import { useNavigate } from "react-router-dom";
 
 export default function Settings() {
   const [category, setCategory] = useState(null);
+  const [show, setShow] = useState({ display: "none" });
+  const [hide, setHide] = useState(null);
+  const [isLogged, setIsLogged] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const isUserLogged = async () => {
+      const {
+        data: { user },
+        error,
+      } = await supabase.auth.getUser();
+
+      if (error) {
+        console.log(error);
+      }
+      if (!user) {
+        navigate("/login");
+      }
+      if (user) {
+        setIsLogged(true);
+      }
+    };
+
+    isUserLogged();
+  }, []);
 
   const handleClick = (e) => {
     setCategory(e.target.value);
+    setShow({ display: "none" });
+    setHide(null);
+  };
+
+  const handleInstruction = () => {
+    setShow({ display: "block" });
+    setHide({ display: "none" });
+  };
+
+  const handleLogOut = () => {
+    const logOut = async () => {
+      let { error } = await supabase.auth.signOut();
+
+      if (error) {
+        console.log(error);
+      }
+      navigate("/login");
+      setIsLogged(false);
+      window.location.reload(false);
+    };
+    logOut();
   };
 
   return (
     <>
-      <div className="settings">
-        <button
-          className="settings-button"
-          value="movies"
-          onClick={handleClick}
-        >
-          filmy
-        </button>
-        <button
-          className="settings-button"
-          value="tvseries"
-          onClick={handleClick}
-        >
-          seriale
-        </button>
-        <button className="settings-button" value="games" onClick={handleClick}>
-          gry
-        </button>
-        <button className="settings-button" value="books" onClick={handleClick}>
-          książki
-        </button>
-        <button className="settings-button" value="news" onClick={handleClick}>
-          aktualności
-        </button>
-      </div>
-      <div className="settings-details">
-        <SettingsDetails category={category} />
-      </div>
-    </>
-  );
-}
-
-function SettingsDetails({ category }) {
-  const [data, setData] = useState(null);
-  const [id, setId] = useState(null);
-
-  useEffect(() => {
-    if (category) {
-      const getData = async () => {
-        const { data, error } = await supabase
-          .from(category)
-          .select("title, id");
-        if (!error) {
-          setData(data);
-        }
-      };
-      getData();
-    }
-  }, [category]);
-
-  return (
-    <>
-      {data && (
+      {isLogged && (
         <>
-          <div className="settings-title-list">
-            <button className="settings-button">dodaj wpis</button>
-            {data.map((d) => {
-              return (
-                <button
-                  className="settings-button"
-                  style={{ padding: "0.5em" }}
-                  key={d.id}
-                  id={d.id}
-                  onClick={(e) => {
-                    setId(e.target.id);
-                  }}
-                >
-                  {d.title}
-                </button>
-              );
-            })}
-          </div>
-          <div className="settings-edit">
-            <SettingsEdit category={category} id={id} />
-          </div>
-        </>
-      )}
-    </>
-  );
-}
-
-function SettingsEdit({ category, id }) {
-  const [data, setData] = useState(null);
-  const formRef = useRef();
-  const titleRef = useRef();
-
-  useEffect(() => {
-    if (id) {
-      const getData = async () => {
-        const { data, error } = await supabase
-          .from(category)
-          .select("*")
-          .eq("id", id)
-          .single();
-        if (!error) {
-          setData(data);
-          titleRef.current.value = data.title;
-          formRef.current[1].value = data.details;
-          formRef.current[2].value = data.src;
-          formRef.current[3].value = data.copyright;
-
-          formRef.current[5].value = data.director;
-          formRef.current[6].value = data.scenario;
-          formRef.current[7].value = data.productionYear;
-          formRef.current[8].value = data.productionCountry;
-          formRef.current[9].value = data.trailer;
-          formRef.current[10].value = data.reviewAuthor;
-        }
-      };
-      getData();
-    }
-  }, [id]);
-
-  return (
-    <>
-      {data && (
-        <>
-          {category === "movies" ? (
-            <form
-              ref={formRef}
-              style={{ display: "grid" }}
-              className="settings-edit-details"
+          <div className="settings">
+            <button
+              className="settings-button"
+              value="movies"
+              onClick={handleClick}
             >
-              <label>tytuł</label>
-              <input ref={titleRef} />
-              <label>recenzja</label>
-              <textarea value={data.description} />
-              <label>zdjęcie</label>
-              <input value={data.src} />
-              <label>prawa autorskie</label>
-              <input value={data.copyright} />
-              <label>kategoria</label>
-              <select value={data.category}>
-                <option value={null}>Wybierz...</option>
-                <option value="slasher">slasher</option>
-                <option value="psychologiczne">psychologiczne</option>
-                <option value="paranormalne">paranormalne</option>
-                <option value="potwory">potwory</option>
-                <option value="gore">gore</option>
-                <option value="foundFootage">found footage</option>
-              </select>
-              <label>reżyser</label>
-              <input value={data.director} />
-              <label>scenariusz</label>
-              <input value={data.scenario} />
-              <label>rok premiery</label>
-              <input value={data.productionYear} />
-              <label>kraj</label>
-              <input value={data.productionCountry} />
-              <label>trailer</label>
-              <input value={data.trailer} />
-              <label>autor recenzji</label>
-              <input value={data.reviewAuthor} />
-              <button
-                className="settings-button"
-                style={{ width: 150, marginTop: 40, marginBottom: 60 }}
-              >
-                zapisz
-              </button>
-            </form>
-          ) : null}
+              filmy
+            </button>
+            <button
+              className="settings-button"
+              value="tvseries"
+              onClick={handleClick}
+            >
+              seriale
+            </button>
+            <button
+              className="settings-button"
+              value="games"
+              onClick={handleClick}
+            >
+              gry
+            </button>
+            <button
+              className="settings-button"
+              value="books"
+              onClick={handleClick}
+            >
+              książki
+            </button>
+            <button
+              className="settings-button"
+              value="news"
+              onClick={handleClick}
+            >
+              aktualności
+            </button>
+            <button className="settings-button" onClick={handleInstruction}>
+              instrukcja
+            </button>
+            <button className="settings-button" onClick={handleLogOut}>
+              wyloguj
+            </button>
+          </div>
+          <div className="settings-details" style={hide && hide}>
+            <SettingsDetails category={category} />
+          </div>
+          <div className="settings-instruction" style={show}>
+            <label>dodawanie zdjęć:</label>
+            <p style={{ marginTop: 20, marginBottom: 10 }}>
+              Biblioteka zdjęć znajduje się tu:
+            </p>
+            <a href="http://serwer2227981.home.pl/autoinstalator/wordpress1/wp-admin/">
+              WordPress - klik
+            </a>
+            <p style={{ marginTop: 20 }}>login: admin@floofer.pl</p>
+            <p style={{ marginBottom: 20 }}>hasło: V8ATVkgL</p>
+            <p style={{ marginTop: 20, marginBottom: 10 }}>
+              krok 1 - media - dodaj
+            </p>
+            <img src={media1} style={{ width: "60%" }} />
+            <p style={{ marginTop: 20, marginBottom: 10 }}>
+              krok 2 - wybierz pliki
+            </p>
+            <img src={media2} style={{ width: "90%" }} />
+            <p style={{ marginTop: 20, marginBottom: 10 }}>
+              krok 3 - klik na zdjęcie
+            </p>
+            <img src={media3} style={{ width: "90%" }} />
+            <p style={{ marginTop: 20, marginBottom: 10 }}>
+              krok 4 - kopiuj url
+            </p>
+            <img src={media4} style={{ width: "90%", marginBottom: 40 }} />
+            <p style={{ marginTop: 40, marginBottom: 10 }}>
+              instrukcja dodawania trailerów (youtube)
+            </p>
+            <p style={{ marginTop: 20, marginBottom: 10 }}>klik - share</p>
+            <img src={yt1} style={{ width: "50%" }} />
+            <p style={{ marginTop: 20, marginBottom: 10 }}>
+              klik - embed - skopiuj
+            </p>
+            <img src={yt2} style={{ width: "50%", marginBottom: 40 }} />
+          </div>
         </>
       )}
     </>
