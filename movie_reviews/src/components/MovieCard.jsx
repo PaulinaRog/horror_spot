@@ -29,7 +29,7 @@ export default function MovieCard({ description, id }) {
       }
     };
     getMovie();
-  }, []);
+  }, [id]);
 
   const handleDetails = () => {
     setFront({ transform: "rotateY(180deg)" });
