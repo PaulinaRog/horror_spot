@@ -113,7 +113,13 @@ function SingleGame({ id, title, src }) {
 
   return (
     <>
-      <div style={{ width: "33vw", height: "23vh", position: "relative" }}>
+      <div
+        style={{
+          width: "33vh",
+          height: "23vh",
+          position: "relative",
+        }}
+      >
         <img
           src={src}
           id={id}

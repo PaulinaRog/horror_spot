@@ -27,7 +27,7 @@ export default function Book() {
       }
     };
     getBooks();
-  }, []);
+  }, [id]);
 
   const handleScrollDown = () => {
     scrollRef.current.scrollTop = scrollRef.current.scrollTop + 300;

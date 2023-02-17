@@ -32,7 +32,7 @@ export default function SeriesCard({ id }) {
       }
     };
     getSeries();
-  }, []);
+  }, [id]);
 
   const handleDetails = () => {
     setFront({ transform: "rotateY(180deg)" });

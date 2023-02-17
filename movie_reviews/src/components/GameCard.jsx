@@ -31,7 +31,7 @@ export default function GameCard({ id }) {
       }
     };
     getGame();
-  }, []);
+  }, [id]);
 
   const handleDetails = () => {
     setFront({ transform: "rotateY(180deg)" });
