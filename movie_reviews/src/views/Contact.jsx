@@ -27,13 +27,13 @@ export default function Contact() {
         >
           <h2 style={{ marginBottom: 40 }}>napisz do nas</h2>
           <h3>redakcja:</h3>
-          <p>email@email.com</p>
-          <h3>osoba 1:</h3>
-          <p>user@user.com</p>
-          <h3>osoba 2:</h3>
-          <p>user@poncki.pl</p>
-          <h3>osoba 3:</h3>
-          <p>idk@user.com</p>
+          <p>jeszczenie@mamaila.com</p>
+          <h3>Vicek:</h3>
+          <p>vicek11@gmail.com</p>
+          <h3>Puszek:</h3>
+          <p>rog.paulina@gmail.com</p>
+          <h3>Przemo:</h3>
+          <p>pkepinski@gmail.com</p>
         </div>
         <form className="contact-form">
           <label className="contact-form-label">Imię:</label>

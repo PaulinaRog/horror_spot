@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import SettingsMovies from "./SettingsMovies";
 import supabase from "../services/SupabaseClient";
 import SettingsSeries from "./SettingsSeries";
@@ -35,6 +35,18 @@ export default function SettingsDetails({ category }) {
     setAdd(true);
   };
 
+  const scrollRef = useRef();
+
+  const handleScrollDown = (e) => {
+    e.preventDefault();
+    scrollRef.current.scrollTop = scrollRef.current.scrollTop + 300;
+  };
+
+  const handleScrollUp = (e) => {
+    e.preventDefault();
+    scrollRef.current.scrollTop = scrollRef.current.scrollTop - 300;
+  };
+
   return (
     <>
       {data && (
@@ -60,7 +72,33 @@ export default function SettingsDetails({ category }) {
               );
             })}
           </div>
-          <div className="settings-edit">
+          <div className="settings-edit" ref={scrollRef}>
+            <div
+              style={{
+                position: "fixed",
+                diplay: "flex",
+                flexDirection: "row",
+                gap: 20,
+                bottom: 30,
+                width: 200,
+                left: "60%",
+              }}
+            >
+              <button
+                className="settings-button"
+                style={{ width: 50, marginRight: 20 }}
+                onClick={handleScrollUp}
+              >
+                <i className="fa-solid fa-angle-up"></i>
+              </button>
+              <button
+                className="settings-button"
+                style={{ width: 50 }}
+                onClick={handleScrollDown}
+              >
+                <i className="fa-solid fa-angle-down"></i>
+              </button>
+            </div>
             {!add && category === "movies" ? (
               <SettingsMovies category={category} id={id} />
             ) : null}

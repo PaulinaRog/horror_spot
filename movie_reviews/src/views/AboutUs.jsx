@@ -1,8 +1,8 @@
 import React from "react";
 import Nav from "../components/Nav";
-import puni from "../assets/puni.jpg";
-import sadako from "../assets/sadako.png";
-import saw from "../assets/saw.jpg";
+import puni from "../assets/pfp.jpg";
+import vicek from "../assets/ryj1.jpg";
+import przemo from "../assets/przemo.jpg";
 import terrifier from "../assets/terrifier.jpg";
 import { useState } from "react";
 import people from "../utils/People";
@@ -104,13 +104,13 @@ export default function AboutUs() {
         <div className="aboutus-container">
           <img
             className="aboutus-photos aboutus-photos-1"
-            src={sadako}
+            src={vicek}
             style={style1 && style1}
             onClick={handleClick1}
             id={1}
           />
           <p style={p} className="aboutus-name aboutus-name-1">
-            vicek
+            Vicek
           </p>
           <img
             className="aboutus-photos aboutus-photos-2"
@@ -124,13 +124,13 @@ export default function AboutUs() {
           </p>
           <img
             className="aboutus-photos aboutus-photos-3"
-            src={saw}
+            src={przemo}
             style={style3 && style3}
             onClick={handleClick3}
             id={3}
           />
           <p style={p} className="aboutus-name aboutus-name-3">
-            ktośtam
+            Przemo
           </p>
           <img
             className="aboutus-photos aboutus-photos-4"
@@ -140,7 +140,7 @@ export default function AboutUs() {
             id={4}
           />
           <p style={p} className="aboutus-name aboutus-name-4">
-            ktośinny
+            Może Ty?..
           </p>
           <div className="aboutus-info" style={info}>
             <h2 style={{ margin: "5% 0 0 5%", animation: "appear 2s ease" }}>

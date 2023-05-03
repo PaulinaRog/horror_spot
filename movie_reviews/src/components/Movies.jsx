@@ -13,7 +13,8 @@ export default function Movies({ category }) {
         const { data, error } = await supabase
           .from("movies")
           .select("id, src, title")
-          .eq("category", category);
+          .eq("category", category)
+          .order("id", { ascending: false });
         if (error) {
           console.log(error);
         }
@@ -26,7 +27,8 @@ export default function Movies({ category }) {
       const getMovies = async () => {
         const { data, error } = await supabase
           .from("movies")
-          .select("id, src, title");
+          .select("id, src, title")
+          .order("id", { ascending: false });
         if (error) {
           console.log(error);
         }

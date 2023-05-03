@@ -12,7 +12,8 @@ export default function () {
     const getBooks = async () => {
       const { data, error } = await supabase
         .from("books")
-        .select("id, author, title, src");
+        .select("id, author, title, src")
+        .order("id", { ascending: false });
       if (error) {
         console.log(error);
       }

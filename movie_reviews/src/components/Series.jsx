@@ -21,7 +21,8 @@ export default function Series({ category }) {
         const { data, error } = await supabase
           .from("tvseries")
           .select("id, src, title")
-          .eq("category", category);
+          .eq("category", category)
+          .order("id", { ascending: false });
         if (error) {
           console.log(error);
         }
@@ -35,7 +36,8 @@ export default function Series({ category }) {
       const getSeries = async () => {
         const { data, error } = await supabase
           .from("tvseries")
-          .select("id, src, title");
+          .select("id, src, title")
+          .order("id", { ascending: false });
         if (error) {
           console.log(error);
         }

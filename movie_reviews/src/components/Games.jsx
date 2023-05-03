@@ -17,7 +17,8 @@ export default function Games({ category }) {
         const { data, error } = await supabase
           .from("games")
           .select("id, src, title")
-          .eq("category", category);
+          .eq("category", category)
+          .order("id", { ascending: false });
         if (error) {
           console.log(error);
         }
@@ -30,7 +31,8 @@ export default function Games({ category }) {
       const getGames = async () => {
         const { data, error } = await supabase
           .from("games")
-          .select("id, src, title");
+          .select("id, src, title")
+          .order("id", { ascending: false });
         if (error) {
           console.log(error);
         }

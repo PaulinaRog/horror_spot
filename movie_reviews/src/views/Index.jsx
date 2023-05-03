@@ -62,15 +62,15 @@ export default function Index() {
             style={{ width: 800, marginTop: 40, color: "rgb(144, 144, 144)" }}
             className="index-desc"
           >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
-            animi asperiores, illo sit minus ullam recusandae eius fugit
-            mollitia voluptates fugiat ducimus rem tempora delectus enim, esse
-            eveniet sunt quia ex modi provident accusamus? Voluptatem nesciunt,
-            nostrum asperiores maiores doloribus facere cupiditate omnis totam,
-            temporibus at minima quis quisquam suscipit repudiandae magni modi a
-            vel earum corrupti ipsum. Minus amet perferendis enim qui laudantium
-            modi omnis et officia quibusdam eaque corrupti, labore aspernatur
-            facere molestiae delectus?
+            Na Horror Spot znajdziecie recenzje filmów, seriali, książek oraz
+            gier komputerowych, a także aktualności ze świata grozy. Poza stroną
+            internetową prowadzimy także kanał YouTube, gdzie publikujemy
+            recenzje wideo, wywiady oraz publicystykę. Naszą ambicją jest
+            zbudowanie dobrze rozumiejącej się społeczności miłośników horroru.
+            Jeśli chcesz być jej częścią, dołącz do nas na Facebooku,
+            Instagramie i przede wszystkim Discordzie, bo to właśnie tam toczą
+            się najciekawsze dyskusje, niekoniecznie bezpośrednio związane z
+            tematyką strony. Niech mrok będzie z Tobą!
           </p>
         </div>
       </div>
