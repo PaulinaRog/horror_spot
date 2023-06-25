@@ -1,4 +1,11 @@
 .horror-title {
+  @include tablet {
+    font-size: 50px;
+  }
+  @include mobile {
+    font-size: 30px;
+  }
+
   animation: glitch 5s linear infinite;
   font-size: 90px;
   color: $red;
@@ -24,6 +31,11 @@
 }
 
 .title {
+  @include tablet {
+    top: 20%;
+    left: 20%;
+  }
+
   position: absolute;
   top: 30%;
   left: 30%;

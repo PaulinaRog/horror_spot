@@ -1,7 +1,13 @@
 body {
+  @include tablet {
+    font-size: 15px;
+  }
+  @include mobile {
+    font-size: 12px;
+  }
+
   box-sizing: border-box;
   font-family: $font-main;
-  font-size: 16px;
   color: $white-fonts;
   background-color: black;
   caret-color: transparent;

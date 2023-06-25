@@ -1,4 +1,9 @@
 .movies {
+  @include tablet {
+    height: 100vh;
+    width: 35vw;
+    left: 55px;
+  }
   height: 85vh;
   position: absolute;
   top: 50%;
@@ -19,6 +24,10 @@
   }
 
   &-poster {
+    @include tablet {
+      width: 25vw;
+      height: 10vh;
+    }
     width: 15vw;
     height: 20vh;
     object-fit: cover;

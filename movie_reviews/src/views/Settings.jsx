@@ -119,11 +119,13 @@ export default function Settings() {
             <p style={{ marginTop: 20, marginBottom: 10 }}>
               Biblioteka zdjęć znajduje się tu:
             </p>
-            <a href="http://serwer2227981.home.pl/autoinstalator/wordpress1/wp-admin/">
+            <a href="https://horrorspot.pl/wp-admin/upload.php">
               WordPress - klik
             </a>
-            <p style={{ marginTop: 20 }}>login: admin@floofer.pl</p>
-            <p style={{ marginBottom: 20 }}>hasło: V8ATVkgL</p>
+            <p style={{ marginTop: 20 }}>
+              dane logowania z hostingera - najpierw zalogować się tam, później
+              dopiero klik na link powyżej
+            </p>
             <p style={{ marginTop: 20, marginBottom: 10 }}>
               krok 1 - media - dodaj
             </p>

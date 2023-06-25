@@ -18,12 +18,13 @@ export default function Index() {
   const [copyrights, setCopyrights] = useState({ display: "none" });
   const [movies, setMovies] = useState(null);
   const [category, setCategory] = useState(null);
-
-  console.log(category);
+  const view = window.innerWidth;
 
   useEffect(() => {
-    setAnimation("width 2s ease");
-    setWidth("120vw");
+    if (view > 960) {
+      setAnimation("width 2s ease");
+      setWidth("120vw");
+    }
 
     if (pathname.includes(`/movies/${id}`)) {
       const getMovie = async () => {
@@ -68,11 +69,15 @@ export default function Index() {
             </h1>
             <div
               className="index"
-              style={{
-                backgroundImage: `url(${mainPhoto})`,
-                animation: animation && animation,
-                width: width && width,
-              }}
+              style={
+                view > 960
+                  ? {
+                      backgroundImage: `url(${mainPhoto})`,
+                      animation: animation && animation,
+                      width: width && width,
+                    }
+                  : null
+              }
             ></div>
             <MovieCategories setCategory={setCategory} />
           </>
@@ -96,11 +101,15 @@ export default function Index() {
             </h2>
             <div
               className="index"
-              style={{
-                backgroundImage: `url(${movies && movies.src})`,
-                right: 0,
-                filter: "brightness(70%)",
-              }}
+              style={
+                view > 960
+                  ? {
+                      backgroundImage: `url(${movies && movies.src})`,
+                      right: 0,
+                      filter: "brightness(70%)",
+                    }
+                  : null
+              }
             ></div>
             <MovieCard description={movies && movies.description} id={id} />
             <p style={copyrights} className="movies-copyrights">
